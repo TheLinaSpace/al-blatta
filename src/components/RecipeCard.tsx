@@ -11,24 +11,26 @@ interface RecipeCardProps {
     ingredients: string;
     instructions: string;
   };
+  index?: number;
 }
 
 const cardStyles = [
-  { default: "/card-1-default.png", hover: "/card-1-hover.png" },
-  { default: "/card-2-default.png", hover: "/card-2-hover.png" },
+  { default: "/card-1-default.png", hover: "/card-1-hover.png", bg: "rgba(189,204,233,0.4)" },
+  { default: "/card-2-default.png", hover: "/card-2-hover.png", bg: "rgba(185,63,21,0.4)" },
 ];
 
-export function RecipeCard({ recipe, labels }: RecipeCardProps) {
+export function RecipeCard({ recipe, labels, index = 0 }: RecipeCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const styleIndex = recipe.id.split("").reduce((sum, ch) => sum + ch.charCodeAt(0), 0) % 2;
+  const styleIndex = index % 2;
   const style = cardStyles[styleIndex];
 
   return (
     <article
-      className={`recipe-card group relative rounded-2xl overflow-hidden transition-all duration-300 ${
+      className={`recipe-card group relative rounded-[22px] overflow-hidden transition-all duration-300 ${
         expanded ? "col-span-1 sm:col-span-2 lg:col-span-3" : ""
       }`}
+      style={{ backgroundColor: style.bg }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -48,7 +50,7 @@ export function RecipeCard({ recipe, labels }: RecipeCardProps) {
 
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full text-start cursor-pointer relative z-10 aspect-square flex flex-col items-center justify-center"
+        className="w-full text-start cursor-pointer relative z-10 aspect-[330/292] flex flex-col items-center justify-center"
       >
         <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white/50 shadow-sm">
           <img
@@ -59,7 +61,7 @@ export function RecipeCard({ recipe, labels }: RecipeCardProps) {
           />
         </div>
 
-        <h3 className="text-lg font-semibold text-stone-800 font-sans mt-4 px-5 text-center">
+        <h3 className="text-[32px] text-black font-mansalva mt-4 px-5 text-center">
           {recipe.title}
         </h3>
       </button>

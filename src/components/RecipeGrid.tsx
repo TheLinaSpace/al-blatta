@@ -49,9 +49,9 @@ export function RecipeGrid({ recipes, labels }: RecipeGridProps) {
           <p className="text-lg">{labels.noResults}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} labels={labels} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filtered.map((recipe, index) => (
+            <RecipeCard key={recipe.id} recipe={recipe} labels={labels} index={index} />
           ))}
         </div>
       )}

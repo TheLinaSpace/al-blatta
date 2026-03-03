@@ -2,6 +2,21 @@ import type { Recipe } from "./recipes";
 
 export type Lang = "ar" | "en";
 
+export interface OurSouthArticle {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  coverImage: string;
+  coverImageAlt: string;
+}
+
+export interface OurSouthContent {
+  pageTitle: string;
+  pageSubtitle: string;
+  articles: OurSouthArticle[];
+}
+
 export interface Translations {
   siteTitle: string;
   heroTitle: string;
@@ -23,6 +38,7 @@ export interface Translations {
   };
   categories: string[];
   recipes: Recipe[];
+  ourSouth: OurSouthContent;
 }
 
 export const translations: Record<Lang, Translations> = {
@@ -39,7 +55,7 @@ export const translations: Record<Lang, Translations> = {
     people: "أشخاص",
     ingredients: "المكوّنات",
     instructions: "طريقة التحضير",
-    footer: "صُنع بواسطة Astro و React و Tailwind CSS",
+    footer: "Al'Blatta 2026",
     nav: {
       recipes: "الوصفات",
       ourSouth: "جنوبنا",
@@ -55,7 +71,7 @@ export const translations: Record<Lang, Translations> = {
           "أصداف برغل مقلية ومقرمشة محشوة بلحم الغنم المتبّل والصنوبر والبصل. من أشهر الأطباق اللبنانية.",
         category: "أطباق رئيسية",
         image: "🧆",
-        photo: "https://images.unsplash.com/photo-1579888944880-d98341245702?w=400&h=400&fit=crop",
+        photo: "/dishes/kibbeh.png",
         prepTime: "٤٥ د",
         cookTime: "٢٠ د",
         servings: 6,
@@ -83,33 +99,64 @@ export const translations: Record<Lang, Translations> = {
         ],
       },
       {
-        id: "hummus",
-        title: "حمّص",
+        id: "kibbet-banadoora",
+        title: "كبّة بندورة",
         description:
-          "غموس حمّص ناعم كالحرير ممزوج بالطحينة والليمون والثوم. الطبق الأساسي في المطبخ الشرقي.",
-        category: "مقبلات",
-        image: "🫘",
-        photo: "https://images.unsplash.com/photo-1577805947697-89e18249d767?w=400&h=400&fit=crop",
-        prepTime: "١٥ د",
-        cookTime: "٠ د",
-        servings: 8,
+          "كبّة مطبوخة في صلصة البندورة الغنية بالتوابل، تُقدّم مع البصل الأخضر. طبق جنوبي أصيل.",
+        category: "أطباق رئيسية",
+        image: "🍅",
+        photo: "/dishes/kibbet-banadoora.png",
+        prepTime: "٣٠ د",
+        cookTime: "٤٠ د",
+        servings: 6,
         ingredients: [
-          "٢ علبة حمّص (٤٠٠ غ لكل علبة) مصفّاة ومغسولة",
-          "⅓ كوب طحينة",
-          "٣ ملاعق كبيرة عصير ليمون",
-          "٢ فص ثوم",
-          "٣ ملاعق كبيرة زيت زيتون",
-          "½ ملعقة صغيرة كمون",
-          "ملح حسب الرغبة",
-          "ماء مثلج حسب الحاجة",
-          "بابريكا وزيت زيتون للتزيين",
+          "٥٠٠ غ لحم غنم مفروم",
+          "١ كوب برغل ناعم",
+          "بصلة كبيرة مبروشة",
+          "٤ حبات بندورة مقشرة ومفرومة",
+          "٢ ملعقة كبيرة معجون بندورة",
+          "١ ملعقة صغيرة بهار حلو",
+          "½ ملعقة صغيرة قرفة",
+          "ملح وفلفل حسب الرغبة",
+          "بصل أخضر للتزيين",
         ],
         instructions: [
-          "اخلطي الحمّص في محضرة الطعام حتى يصبح عجينة سميكة.",
-          "أضيفي الطحينة وعصير الليمون والثوم وزيت الزيتون والكمون والملح.",
-          "اخلطي حتى يصبح ناعماً جداً، مع إضافة الماء المثلج ملعقة تلو الأخرى للوصول للقوام المطلوب.",
-          "ذوقي واضبطي الليمون والملح.",
-          "افرديه على طبق، رشّي زيت الزيتون والبابريكا فوقه.",
+          "انقعي البرغل في الماء لمدة ٣٠ دقيقة، ثم صفّيه واعصريه.",
+          "اخلطي البرغل مع اللحم المفروم والبصل المبروش والبهارات لتشكيل عجينة الكبّة.",
+          "شكّلي أقراصاً صغيرة من عجينة الكبّة.",
+          "حضّري صلصة البندورة بطهي البندورة مع معجون البندورة والتوابل.",
+          "ضعي أقراص الكبّة في الصلصة واطبخيها على نار هادئة لمدة ٣٠ دقيقة.",
+          "زيّني بالبصل الأخضر وقدّمي ساخنة مع الأرز.",
+        ],
+      },
+      {
+        id: "mujaddara",
+        title: "مجدّرة",
+        description:
+          "طبق متواضع لكنه شهي — عدس وأرز يعلوهما البصل المقلي المكرمل. طعام البيت بأفضل حالاته.",
+        category: "أطباق جانبية",
+        image: "🍚",
+        photo: "/dishes/mjadara.png",
+        prepTime: "١٠ د",
+        cookTime: "٤٥ د",
+        servings: 6,
+        ingredients: [
+          "١ كوب عدس أخضر أو بني",
+          "١ كوب أرز طويل الحبة",
+          "٣ حبات بصل كبيرة مقطعة شرائح رفيعة",
+          "¼ كوب زيت زيتون",
+          "١ ملعقة صغيرة كمون",
+          "½ ملعقة صغيرة بهار حلو",
+          "ملح وفلفل حسب الرغبة",
+          "لبن للتقديم",
+        ],
+        instructions: [
+          "اطبخي العدس في ماء مملّح حتى يصبح شبه طري، حوالي ٢٠ دقيقة. صفّيه.",
+          "في هذه الأثناء، سخّني زيت الزيتون وقلّبي شرائح البصل على نار متوسطة-هادئة حتى تصبح بنية داكنة، حوالي ٢٥ دقيقة. احتفظي بنصفها للتزيين.",
+          "أضيفي الأرز والبصل المتبقي والكمون والبهار وكوبين ماء إلى العدس.",
+          "اغلي المزيج، ثم خففي النار وغطّي واطبخي لمدة ١٨ دقيقة حتى ينضج الأرز.",
+          "انفشي بالشوكة وزيّني بالبصل المقلي المحتفظ به.",
+          "قدّمي مع اللبن.",
         ],
       },
       {
@@ -270,37 +317,54 @@ export const translations: Record<Lang, Translations> = {
           "افرديه على طبق، رشّي زيت الزيتون وحب الرمّان فوقه.",
         ],
       },
-      {
-        id: "mujaddara",
-        title: "مجدّرة",
-        description:
-          "طبق متواضع لكنه شهي — عدس وأرز يعلوهما البصل المقلي المكرمل. طعام البيت بأفضل حالاته.",
-        category: "أطباق جانبية",
-        image: "🍚",
-        photo: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=400&fit=crop",
-        prepTime: "١٠ د",
-        cookTime: "٤٥ د",
-        servings: 6,
-        ingredients: [
-          "١ كوب عدس أخضر أو بني",
-          "١ كوب أرز طويل الحبة",
-          "٣ حبات بصل كبيرة مقطعة شرائح رفيعة",
-          "¼ كوب زيت زيتون",
-          "١ ملعقة صغيرة كمون",
-          "½ ملعقة صغيرة بهار حلو",
-          "ملح وفلفل حسب الرغبة",
-          "لبن للتقديم",
-        ],
-        instructions: [
-          "اطبخي العدس في ماء مملّح حتى يصبح شبه طري، حوالي ٢٠ دقيقة. صفّيه.",
-          "في هذه الأثناء، سخّني زيت الزيتون وقلّبي شرائح البصل على نار متوسطة-هادئة حتى تصبح بنية داكنة، حوالي ٢٥ دقيقة. احتفظي بنصفها للتزيين.",
-          "أضيفي الأرز والبصل المتبقي والكمون والبهار وكوبين ماء إلى العدس.",
-          "اغلي المزيج، ثم خففي النار وغطّي واطبخي لمدة ١٨ دقيقة حتى ينضج الأرز.",
-          "انفشي بالشوكة وزيّني بالبصل المقلي المحتفظ به.",
-          "قدّمي مع اللبن.",
-        ],
-      },
     ],
+    ourSouth: {
+      pageTitle: "جنوبنا",
+      pageSubtitle:
+        "حكايا من تراب الجنوب — قرى، تقاليد، ومناظر طبيعية تروي قصة أرضنا وناسها",
+      articles: [
+        {
+          id: "villages",
+          title: "قرى الجنوب: حجارة تحكي التاريخ",
+          excerpt:
+            "من بنت جبيل إلى مرجعيون، كل قرية في جنوب لبنان تحمل قصة عمرها قرون. بيوت حجرية تطل على وديان خضراء، وأزقة ضيقة تعبق برائحة الزعتر والتراب.",
+          category: "قرى",
+          coverImage:
+            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=500&fit=crop",
+          coverImageAlt: "قرية جنوبية لبنانية تقليدية ببيوت حجرية",
+        },
+        {
+          id: "traditions",
+          title: "تقاليد لا تموت: من الدبكة إلى المونة",
+          excerpt:
+            "في كل موسم، تنبض قرى الجنوب بطقوس توارثتها الأجيال. من تحضير المونة في الصيف إلى حلقات الدبكة في الأعراس، هذه التقاليد ليست مجرد عادات — إنها هوية شعب بأكمله.",
+          category: "تقاليد",
+          coverImage:
+            "https://images.unsplash.com/photo-1606820854416-439b3305ff39?w=800&h=500&fit=crop",
+          coverImageAlt: "نساء يحضّرن المونة الموسمية في قرية جنوبية",
+        },
+        {
+          id: "landscapes",
+          title: "مناظر الجنوب: حيث تعانق الجبال البحر",
+          excerpt:
+            "تلال خضراء مكسوة بأشجار الزيتون، وديان عميقة يشقها نهر الليطاني، وشواطئ صخرية تمتد من صور إلى الناقورة. طبيعة الجنوب ليست مجرد مشهد — إنها روح المكان.",
+          category: "طبيعة",
+          coverImage:
+            "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=500&fit=crop",
+          coverImageAlt: "مناظر طبيعية خلابة في جنوب لبنان مع أشجار الزيتون",
+        },
+        {
+          id: "heritage",
+          title: "تراث الأرض: زيتون وزعتر وحكايات أجداد",
+          excerpt:
+            "زيت الزيتون ليس مجرد مكوّن في المطبخ الجنوبي — إنه رمز للصمود والارتباط بالأرض. من موسم القطاف إلى معاصر الزيت التقليدية، اكتشف كيف يحافظ أهل الجنوب على تراثهم الزراعي.",
+          category: "تراث",
+          coverImage:
+            "https://images.unsplash.com/photo-1445282768818-728615cc910a?w=800&h=500&fit=crop",
+          coverImageAlt: "أشجار زيتون معمّرة في جنوب لبنان",
+        },
+      ],
+    },
   },
   en: {
     siteTitle: "Kibbeh",
@@ -315,7 +379,7 @@ export const translations: Record<Lang, Translations> = {
     people: "",
     ingredients: "Ingredients",
     instructions: "Instructions",
-    footer: "Made with Astro, React & Tailwind CSS",
+    footer: "Al'Blatta 2026",
     nav: {
       recipes: "Recipes",
       ourSouth: "Our South",
@@ -331,7 +395,7 @@ export const translations: Record<Lang, Translations> = {
           "Crispy fried bulgur shells stuffed with spiced ground lamb, pine nuts, and onions. A beloved Levantine classic.",
         category: "Main Dishes",
         image: "🧆",
-        photo: "https://images.unsplash.com/photo-1579888944880-d98341245702?w=400&h=400&fit=crop",
+        photo: "/dishes/kibbeh.png",
         prepTime: "45 min",
         cookTime: "20 min",
         servings: 6,
@@ -359,33 +423,64 @@ export const translations: Record<Lang, Translations> = {
         ],
       },
       {
-        id: "hummus",
-        title: "Hummus",
+        id: "kibbet-banadoora",
+        title: "Kibbet Banadoora",
         description:
-          "Silky smooth chickpea dip blended with tahini, lemon, and garlic. The ultimate Middle Eastern staple.",
-        category: "Appetizers",
-        image: "🫘",
-        photo: "https://images.unsplash.com/photo-1577805947697-89e18249d767?w=400&h=400&fit=crop",
-        prepTime: "15 min",
-        cookTime: "0 min",
-        servings: 8,
+          "Kibbeh cooked in a rich spiced tomato sauce, topped with green onions. An authentic Southern Lebanese dish.",
+        category: "Main Dishes",
+        image: "🍅",
+        photo: "/dishes/kibbet-banadoora.png",
+        prepTime: "30 min",
+        cookTime: "40 min",
+        servings: 6,
         ingredients: [
-          "2 cans (15 oz) chickpeas, drained and rinsed",
-          "1/3 cup tahini",
-          "3 tbsp lemon juice",
-          "2 cloves garlic",
-          "3 tbsp olive oil",
-          "1/2 tsp cumin",
-          "Salt to taste",
-          "Ice water as needed",
-          "Paprika and olive oil for garnish",
+          "1 lb ground lamb",
+          "1 cup fine bulgur wheat",
+          "1 large onion, grated",
+          "4 tomatoes, peeled and chopped",
+          "2 tbsp tomato paste",
+          "1 tsp allspice",
+          "1/2 tsp cinnamon",
+          "Salt and pepper to taste",
+          "Green onions for garnish",
         ],
         instructions: [
-          "Blend chickpeas in a food processor until a thick paste forms.",
-          "Add tahini, lemon juice, garlic, olive oil, cumin, and salt.",
-          "Blend until very smooth, adding ice water a tablespoon at a time for desired consistency.",
-          "Taste and adjust lemon juice and salt.",
-          "Spread on a plate, drizzle with olive oil, and sprinkle with paprika.",
+          "Soak bulgur in water for 30 minutes, then drain and squeeze dry.",
+          "Mix bulgur with ground lamb, grated onion, and spices to form the kibbeh dough.",
+          "Shape into small patties.",
+          "Prepare the tomato sauce by cooking tomatoes with tomato paste and spices.",
+          "Place kibbeh patties in the sauce and simmer on low heat for 30 minutes.",
+          "Garnish with green onions and serve hot with rice.",
+        ],
+      },
+      {
+        id: "mujaddara",
+        title: "Mujaddara",
+        description:
+          "Humble yet hearty \u2014 lentils and rice topped with deeply caramelized onions. Comfort food at its finest.",
+        category: "Sides",
+        image: "🍚",
+        photo: "/dishes/mjadara.png",
+        prepTime: "10 min",
+        cookTime: "45 min",
+        servings: 6,
+        ingredients: [
+          "1 cup green or brown lentils",
+          "1 cup long-grain rice",
+          "3 large onions, thinly sliced",
+          "1/4 cup olive oil",
+          "1 tsp cumin",
+          "1/2 tsp allspice",
+          "Salt and pepper to taste",
+          "Plain yogurt for serving",
+        ],
+        instructions: [
+          "Cook lentils in salted water until almost tender, about 20 minutes. Drain.",
+          "Meanwhile, heat olive oil and caramelize onion slices over medium-low heat until deep brown, about 25 minutes. Set aside half for garnish.",
+          "Add rice, remaining onions, cumin, allspice, and 2 cups water to the lentils.",
+          "Bring to a boil, reduce heat, cover, and cook for 18 minutes until rice is tender.",
+          "Fluff with a fork and top with the reserved crispy caramelized onions.",
+          "Serve with a dollop of plain yogurt.",
         ],
       },
       {
@@ -546,36 +641,53 @@ export const translations: Record<Lang, Translations> = {
           "Spread on a plate, drizzle with olive oil, and top with pomegranate seeds.",
         ],
       },
-      {
-        id: "mujaddara",
-        title: "Mujaddara",
-        description:
-          "Humble yet hearty \u2014 lentils and rice topped with deeply caramelized onions. Comfort food at its finest.",
-        category: "Sides",
-        image: "🍚",
-        photo: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=400&fit=crop",
-        prepTime: "10 min",
-        cookTime: "45 min",
-        servings: 6,
-        ingredients: [
-          "1 cup green or brown lentils",
-          "1 cup long-grain rice",
-          "3 large onions, thinly sliced",
-          "1/4 cup olive oil",
-          "1 tsp cumin",
-          "1/2 tsp allspice",
-          "Salt and pepper to taste",
-          "Plain yogurt for serving",
-        ],
-        instructions: [
-          "Cook lentils in salted water until almost tender, about 20 minutes. Drain.",
-          "Meanwhile, heat olive oil and caramelize onion slices over medium-low heat until deep brown, about 25 minutes. Set aside half for garnish.",
-          "Add rice, remaining onions, cumin, allspice, and 2 cups water to the lentils.",
-          "Bring to a boil, reduce heat, cover, and cook for 18 minutes until rice is tender.",
-          "Fluff with a fork and top with the reserved crispy caramelized onions.",
-          "Serve with a dollop of plain yogurt.",
-        ],
-      },
     ],
+    ourSouth: {
+      pageTitle: "Our South",
+      pageSubtitle:
+        "Stories from the soil of the South \u2014 villages, traditions, and landscapes that tell the story of our land and its people",
+      articles: [
+        {
+          id: "villages",
+          title: "Southern Villages: Stones That Tell History",
+          excerpt:
+            "From Bint Jbeil to Marjayoun, every village in South Lebanon carries a story centuries old. Stone houses overlooking green valleys, narrow alleys filled with the scent of thyme and earth.",
+          category: "Villages",
+          coverImage:
+            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=500&fit=crop",
+          coverImageAlt: "Traditional South Lebanese village with stone houses",
+        },
+        {
+          id: "traditions",
+          title: "Living Traditions: From Dabke to Mouneh",
+          excerpt:
+            "With every season, the villages of the South come alive with rituals passed down through generations. From preparing mouneh in summer to dabke circles at weddings, these traditions are the identity of an entire people.",
+          category: "Traditions",
+          coverImage:
+            "https://images.unsplash.com/photo-1606820854416-439b3305ff39?w=800&h=500&fit=crop",
+          coverImageAlt: "Women preparing seasonal mouneh in a southern village",
+        },
+        {
+          id: "landscapes",
+          title: "Southern Landscapes: Where Mountains Meet the Sea",
+          excerpt:
+            "Green hills draped in olive trees, deep valleys carved by the Litani River, and rocky shores stretching from Tyre to Naqoura. The nature of the South is not just a view \u2014 it is the spirit of the place.",
+          category: "Landscapes",
+          coverImage:
+            "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=500&fit=crop",
+          coverImageAlt: "Scenic South Lebanon landscape with olive trees",
+        },
+        {
+          id: "heritage",
+          title: "Heritage of the Land: Olives, Thyme & Ancestral Tales",
+          excerpt:
+            "Olive oil is not just an ingredient in southern cooking \u2014 it is a symbol of resilience and connection to the land. From harvest season to traditional oil presses, discover how the people of the South preserve their heritage.",
+          category: "Heritage",
+          coverImage:
+            "https://images.unsplash.com/photo-1445282768818-728615cc910a?w=800&h=500&fit=crop",
+          coverImageAlt: "Ancient olive trees in South Lebanon",
+        },
+      ],
+    },
   },
 };
