@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-mansalva: "Mansalva", cursive;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Decorative confetti/leaf background pattern */
+.confetti-bg {
+  background-image:
+    radial-gradient(circle at 10% 20%, #d4a574 1px, transparent 1px),
+    radial-gradient(circle at 30% 40%, #c9956b 1.5px, transparent 1.5px),
+    radial-gradient(circle at 50% 15%, #b8845a 1px, transparent 1px),
+    radial-gradient(circle at 70% 35%, #d4a574 1.2px, transparent 1.2px),
+    radial-gradient(circle at 90% 25%, #c9956b 1px, transparent 1px),
+    radial-gradient(circle at 20% 60%, #b8845a 1.5px, transparent 1.5px),
+    radial-gradient(circle at 40% 10%, #d4a574 1px, transparent 1px),
+    radial-gradient(circle at 60% 50%, #c9956b 1.2px, transparent 1.2px),
+    radial-gradient(circle at 80% 15%, #b8845a 1px, transparent 1px),
+    radial-gradient(circle at 15% 45%, #d4a574 1.5px, transparent 1.5px),
+    radial-gradient(circle at 35% 30%, #c9956b 1px, transparent 1px),
+    radial-gradient(circle at 55% 55%, #b8845a 1.2px, transparent 1.2px),
+    radial-gradient(circle at 75% 5%, #d4a574 1px, transparent 1px),
+    radial-gradient(circle at 95% 40%, #c9956b 1.5px, transparent 1.5px),
+    radial-gradient(circle at 5% 35%, #b8845a 1px, transparent 1px),
+    radial-gradient(circle at 25% 8%, #d4a574 1.2px, transparent 1.2px),
+    radial-gradient(circle at 45% 48%, #c9956b 1px, transparent 1px),
+    radial-gradient(circle at 65% 22%, #b8845a 1.5px, transparent 1.5px),
+    radial-gradient(circle at 85% 55%, #d4a574 1px, transparent 1px);
+}
+

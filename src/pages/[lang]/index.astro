@@ -1,0 +1,62 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Navbar } from "../../components/Navbar";
+import { RecipeGrid } from "../../components/RecipeGrid";
+import { translations, type Lang } from "../../data/translations";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "ar" } }, { params: { lang: "en" } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const altLang: Lang = lang === "ar" ? "en" : "ar";
+const t = translations[lang];
+
+const labels = {
+  searchPlaceholder: t.searchPlaceholder,
+  noResults: t.noResults,
+  prep: t.prep,
+  cook: t.cook,
+  serves: t.serves,
+  people: t.people,
+  ingredients: t.ingredients,
+  instructions: t.instructions,
+};
+---
+
+<Layout
+  title={`${t.siteTitle} — ${lang === "ar" ? "وصفات شرقية" : "Middle Eastern Recipes"}`}
+  description={t.heroSubtitle}
+  lang={lang}
+  altLang={altLang}
+  altHref={`/${altLang}/`}
+>
+  <div class="relative">
+    <div class="confetti-bg absolute inset-x-0 top-0 h-72 pointer-events-none opacity-30" />
+
+    <div class="relative">
+      <Navbar client:load nav={t.nav} lang={lang} altLang={altLang} />
+
+      <header class="text-center px-4 pt-8 pb-6">
+        <h1 class="text-[32px] font-sans text-stone-800 mx-auto leading-snug whitespace-nowrap">
+          {t.heroTitle}
+        </h1>
+      </header>
+
+      <main id="recipes" class="max-w-6xl mx-auto px-4 py-8">
+        <RecipeGrid
+          client:load
+          recipes={t.recipes}
+          categories={t.categories}
+          labels={labels}
+        />
+      </main>
+    </div>
+  </div>
+
+  <footer
+    class="text-center text-stone-400 text-sm py-8 border-t border-stone-100 mt-12"
+  >
+    {t.footer}
+  </footer>
+</Layout>
