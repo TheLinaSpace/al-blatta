@@ -21,6 +21,12 @@ const labels = {
   people: t.people,
   ingredients: t.ingredients,
   instructions: t.instructions,
+  portionSize: t.portionSize,
+  recipeTab: t.recipeTab,
+  storyTimeTab: t.storyTimeTab,
+  otherRecipesTab: t.otherRecipesTab,
+  expand: t.expand,
+  backToRecipes: t.backToRecipes,
 };
 ---
 
@@ -37,17 +43,12 @@ const labels = {
     <div class="relative">
       <Navbar client:load nav={t.nav} lang={lang} altLang={altLang} activePage="recipes" />
 
-      <header class="text-center px-4 pt-8 pb-6">
-        <h1 class="text-[32px] font-mansalva text-[#b93f15] mx-auto leading-snug whitespace-nowrap" style="text-shadow: 0px 1px 3px rgba(0,0,0,0.15), 0px 1px 2px rgba(0,0,0,0.3);">
-          {t.heroTitle}
-        </h1>
-      </header>
-
       <main id="recipes" class="max-w-6xl mx-auto px-4 py-8">
         <RecipeGrid
           client:load
           recipes={t.recipes}
           categories={t.categories}
+          lang={lang}
           labels={labels}
         />
       </main>

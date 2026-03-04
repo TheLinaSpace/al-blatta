@@ -2,10 +2,12 @@ import { useState, useMemo } from "react";
 import type { Recipe } from "../data/recipes";
 import { SearchBar } from "./SearchBar";
 import { RecipeCard } from "./RecipeCard";
+import { RecipeDetail } from "./RecipeDetail";
 
 interface RecipeGridProps {
   recipes: Recipe[];
   categories: string[];
+  lang?: string;
   labels: {
     searchPlaceholder: string;
     noResults: string;
@@ -15,11 +17,18 @@ interface RecipeGridProps {
     people: string;
     ingredients: string;
     instructions: string;
+    portionSize: string;
+    recipeTab: string;
+    storyTimeTab: string;
+    otherRecipesTab: string;
+    expand: string;
+    backToRecipes: string;
   };
 }
 
-export function RecipeGrid({ recipes, labels }: RecipeGridProps) {
+export function RecipeGrid({ recipes, lang, labels }: RecipeGridProps) {
   const [search, setSearch] = useState("");
+  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
   const filtered = useMemo(() => {
     const query = search.toLowerCase().trim();
@@ -32,6 +41,19 @@ export function RecipeGrid({ recipes, labels }: RecipeGridProps) {
       );
     });
   }, [search, recipes]);
+
+  if (selectedRecipe) {
+    return (
+      <RecipeDetail
+        recipe={selectedRecipe}
+        allRecipes={recipes}
+        lang={lang}
+        labels={labels}
+        onClose={() => setSelectedRecipe(null)}
+        onSelectRecipe={setSelectedRecipe}
+      />
+    );
+  }
 
   return (
     <div>
@@ -51,7 +73,13 @@ export function RecipeGrid({ recipes, labels }: RecipeGridProps) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((recipe, index) => (
-            <RecipeCard key={recipe.id} recipe={recipe} labels={labels} index={index} />
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+              labels={labels}
+              index={index}
+              onSelect={() => setSelectedRecipe(recipe)}
+            />
           ))}
         </div>
       )}

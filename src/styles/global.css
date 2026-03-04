@@ -1,10 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Aref Ruqaa";
+  src: url("/fonts/ArefRuqaa-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --animate-fade-in: fade-in 0.3s ease-out;
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-mansalva: "Mansalva", cursive;
   --font-heebo: "Heebo", sans-serif;
+  --font-aref-ruqaa: "Aref Ruqaa", serif;
 }
 
 @keyframes fade-in {
@@ -16,6 +25,12 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Arabic pages: override all Latin display fonts with Aref Ruqaa */
+html[lang="ar"] {
+  --font-heebo: "Aref Ruqaa", serif;
+  --font-mansalva: "Aref Ruqaa", serif;
 }
 
 /* Decorative confetti/mosaic tiled background */

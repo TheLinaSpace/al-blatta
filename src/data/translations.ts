@@ -29,6 +29,12 @@ export interface Translations {
   people: string;
   ingredients: string;
   instructions: string;
+  portionSize: string;
+  recipeTab: string;
+  storyTimeTab: string;
+  otherRecipesTab: string;
+  expand: string;
+  backToRecipes: string;
   footer: string;
   nav: {
     recipes: string;
@@ -55,6 +61,12 @@ export const translations: Record<Lang, Translations> = {
     people: "أشخاص",
     ingredients: "المكوّنات",
     instructions: "طريقة التحضير",
+    portionSize: "الحصة",
+    recipeTab: "الوصفة",
+    storyTimeTab: "قصة الطبق",
+    otherRecipesTab: "وصفات أخرى",
+    expand: "توسيع",
+    backToRecipes: "العودة للوصفات",
     footer: "Al'Blatta 2026",
     nav: {
       recipes: "الوصفات",
@@ -379,6 +391,12 @@ export const translations: Record<Lang, Translations> = {
     people: "",
     ingredients: "Ingredients",
     instructions: "Instructions",
+    portionSize: "Portion Size:",
+    recipeTab: "Recipe",
+    storyTimeTab: "Story Time",
+    otherRecipesTab: "Other Recipes",
+    expand: "Expand",
+    backToRecipes: "Back to Recipes",
     footer: "Al'Blatta 2026",
     nav: {
       recipes: "Recipes",

@@ -12,7 +12,7 @@ interface NavbarProps {
 
 export function Navbar({ nav, lang, altLang, activePage = "recipes" }: NavbarProps) {
   const linkClass = (page: string) =>
-    `text-[16px] transition-colors ${
+    `${lang === "ar" ? "text-[20px]" : "text-[16px]"} transition-colors ${
       activePage === page
         ? "font-bold text-black"
         : "font-normal text-black hover:text-black/70"

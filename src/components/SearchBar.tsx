@@ -6,7 +6,7 @@ interface SearchBarProps {
 
 export function SearchBar({ value, placeholder, onChange }: SearchBarProps) {
   return (
-    <div className="relative flex items-center bg-[#f5f5f0] border border-[#d1d5dc] rounded-full shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.1)] px-6 py-1">
+    <div className="relative flex items-center bg-[#f5f5f0] border border-[#d1d5dc] rounded-full shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.1)] ps-6 pe-1 py-1">
       <input
         type="text"
         placeholder={placeholder}
@@ -16,7 +16,7 @@ export function SearchBar({ value, placeholder, onChange }: SearchBarProps) {
       />
       <button
         type="button"
-        className="flex-shrink-0 w-12 h-12 rounded-full bg-[#6d92c7] flex items-center justify-center hover:bg-[#5a7fb4] transition-colors cursor-pointer"
+        className="flex-shrink-0 w-12 h-12 rounded-full bg-[#b93f15] flex items-center justify-center hover:bg-[#a03612] transition-colors cursor-pointer"
         aria-label="Search"
       >
         <svg
