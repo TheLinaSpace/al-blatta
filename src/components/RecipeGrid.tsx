@@ -8,6 +8,7 @@ interface RecipeGridProps {
   recipes: Recipe[];
   categories: string[];
   lang?: string;
+  heroTitle?: string;
   labels: {
     searchPlaceholder: string;
     noResults: string;
@@ -26,7 +27,8 @@ interface RecipeGridProps {
   };
 }
 
-export function RecipeGrid({ recipes, lang, labels }: RecipeGridProps) {
+export function RecipeGrid({ recipes, lang, heroTitle, labels }: RecipeGridProps) {
+  const isAr = lang === "ar";
   const [search, setSearch] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
@@ -57,6 +59,13 @@ export function RecipeGrid({ recipes, lang, labels }: RecipeGridProps) {
 
   return (
     <div>
+      {heroTitle && (
+        <header className="text-center px-4 pt-8 pb-6">
+          <h1 className={`${isAr ? "font-aref-ruqaa text-[42px]" : "font-mansalva text-[32px]"} text-black mx-auto leading-snug whitespace-nowrap`}>
+            {heroTitle}
+          </h1>
+        </header>
+      )}
       <div className="max-w-xl mx-auto mb-10">
         <SearchBar
           value={search}
