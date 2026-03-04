@@ -6,25 +6,26 @@ interface SearchBarProps {
 
 export function SearchBar({ value, placeholder, onChange }: SearchBarProps) {
   return (
-    <div className="relative flex items-center bg-[#f5f5f0] border border-[#d1d5dc] rounded-full shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.1)] ps-6 pe-1 py-1">
+    <div className="relative flex items-center bg-[#f5f5f0] border border-[#d1d5dc] rounded-full shadow-[0px_1px_3px_rgba(0,0,0,0.1),0px_1px_2px_rgba(0,0,0,0.1)] ps-4 sm:ps-6 pe-1 py-1">
       <input
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1 bg-transparent text-[16px] font-normal text-stone-800 placeholder:text-[#99a1af] focus:outline-none py-3"
+        className="flex-1 bg-transparent text-[14px] sm:text-[16px] font-normal text-stone-800 placeholder:text-[#99a1af] focus:outline-none py-2.5 sm:py-3 min-w-0"
       />
       <button
         type="button"
-        className="flex-shrink-0 w-12 h-12 rounded-full bg-[#b93f15] flex items-center justify-center hover:bg-[#a03612] transition-colors cursor-pointer"
+        className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#b93f15] flex items-center justify-center hover:bg-[#a03612] transition-colors cursor-pointer"
         aria-label="Search"
       >
         <svg
-          width="20"
-          height="20"
+          width="18"
+          height="18"
           viewBox="0 0 20 20"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="sm:w-5 sm:h-5"
         >
           <path
             d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"

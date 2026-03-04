@@ -21,30 +21,30 @@ const t = translations[lang];
   altHref={`/${altLang}/our-south`}
 >
   <div class="relative">
-    <div class="confetti-bg absolute inset-x-0 top-0 h-[31rem] pointer-events-none opacity-20" />
+    <div class="confetti-bg absolute inset-x-0 top-0 h-[20rem] sm:h-[31rem] pointer-events-none opacity-20" />
 
     <div class="relative">
       <Navbar client:load nav={t.nav} lang={lang} altLang={altLang} activePage="our-south" />
 
-      <header class="text-center px-4 pt-8 pb-2">
+      <header class="text-center px-4 pt-4 sm:pt-8 pb-2">
         <h1
-          class={`${lang === "ar" ? "font-aref-ruqaa text-[42px]" : "font-mansalva text-[32px]"} text-black mx-auto leading-snug`}
+          class={`${lang === "ar" ? "font-aref-ruqaa text-[28px] sm:text-[42px]" : "font-mansalva text-[24px] sm:text-[32px]"} text-black mx-auto leading-snug`}
         >
           {t.ourSouth.pageTitle}
         </h1>
-        <p class="mt-3 text-stone-600 font-heebo text-base max-w-2xl mx-auto leading-relaxed">
+        <p class="mt-2 sm:mt-3 text-stone-600 font-heebo text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
           {t.ourSouth.pageSubtitle}
         </p>
       </header>
 
-      <main class="max-w-6xl mx-auto px-4 py-10">
+      <main class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-10">
         <OurSouthGrid client:load articles={t.ourSouth.articles} />
       </main>
     </div>
   </div>
 
   <footer
-    class="text-center text-stone-400 text-sm py-8 border-t border-stone-100 mt-12"
+    class="text-center text-stone-400 text-sm py-6 sm:py-8 border-t border-stone-100 mt-8 sm:mt-12"
   >
     {t.footer}
   </footer>

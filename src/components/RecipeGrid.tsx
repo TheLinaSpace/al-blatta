@@ -60,13 +60,13 @@ export function RecipeGrid({ recipes, lang, heroTitle, labels }: RecipeGridProps
   return (
     <div>
       {heroTitle && (
-        <header className="text-center px-4 pt-8 pb-6">
-          <h1 className={`${isAr ? "font-aref-ruqaa text-[42px]" : "font-mansalva text-[32px]"} text-black mx-auto leading-snug whitespace-nowrap`}>
+        <header className="text-center px-4 pt-4 sm:pt-8 pb-4 sm:pb-6">
+          <h1 className={`${isAr ? "font-aref-ruqaa text-[28px] sm:text-[42px]" : "font-mansalva text-[22px] sm:text-[32px]"} text-black mx-auto leading-snug`}>
             {heroTitle}
           </h1>
         </header>
       )}
-      <div className="max-w-xl mx-auto mb-10">
+      <div className="max-w-xl mx-auto mb-6 sm:mb-10">
         <SearchBar
           value={search}
           placeholder={labels.searchPlaceholder}
@@ -80,7 +80,7 @@ export function RecipeGrid({ recipes, lang, heroTitle, labels }: RecipeGridProps
           <p className="text-lg">{labels.noResults}</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {filtered.map((recipe, index) => (
             <RecipeCard
               key={recipe.id}

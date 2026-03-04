@@ -24,7 +24,7 @@ export function OurSouthCard({ article, index }: OurSouthCardProps) {
 
   return (
     <article
-      className="group relative rounded-[22px] overflow-hidden transition-all duration-300"
+      className="group relative rounded-[16px] sm:rounded-[22px] overflow-hidden transition-all duration-300"
       style={{ backgroundColor: bgColor }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -46,11 +46,11 @@ export function OurSouthCard({ article, index }: OurSouthCardProps) {
         </span>
       </div>
 
-      <div className="p-6">
-        <h3 className="text-[22px] font-mansalva text-black leading-snug mb-3">
+      <div className="p-4 sm:p-6">
+        <h3 className="text-[18px] sm:text-[22px] font-mansalva text-black leading-snug mb-2 sm:mb-3">
           {article.title}
         </h3>
-        <p className="text-sm text-stone-700 font-heebo leading-relaxed">
+        <p className="text-xs sm:text-sm text-stone-700 font-heebo leading-relaxed">
           {article.excerpt}
         </p>
       </div>

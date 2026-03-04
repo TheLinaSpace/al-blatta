@@ -28,7 +28,7 @@ export function RecipeCard({ recipe, labels, index = 0, onSelect }: RecipeCardPr
   return (
     <article
       onClick={onSelect}
-      className="recipe-card group relative rounded-[22px] overflow-hidden transition-all duration-300 cursor-pointer"
+      className="recipe-card group relative rounded-[16px] sm:rounded-[22px] overflow-hidden transition-all duration-300 cursor-pointer"
       style={{ backgroundColor: style.bg }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -50,7 +50,7 @@ export function RecipeCard({ recipe, labels, index = 0, onSelect }: RecipeCardPr
       <div
         className="w-full text-start relative z-10 aspect-[330/292] flex flex-col items-center justify-center"
       >
-        <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-white/50 shadow-sm">
+        <div className="w-28 h-28 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white/50 shadow-sm">
           <img
             src={recipe.photo}
             alt={recipe.title}
@@ -59,7 +59,7 @@ export function RecipeCard({ recipe, labels, index = 0, onSelect }: RecipeCardPr
           />
         </div>
 
-        <h3 className="text-[32px] text-black font-mansalva mt-4 px-5 text-center">
+        <h3 className="text-[22px] sm:text-[32px] text-black font-mansalva mt-3 sm:mt-4 px-4 sm:px-5 text-center">
           {recipe.title}
         </h3>
       </div>
