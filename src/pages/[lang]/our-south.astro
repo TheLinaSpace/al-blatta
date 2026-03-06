@@ -32,13 +32,13 @@ const t = translations[lang];
         >
           {t.ourSouth.pageTitle}
         </h1>
-        <p class="mt-2 sm:mt-3 text-stone-600 font-heebo text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+        <p class="mt-2 sm:mt-3 text-black font-heebo text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
           {t.ourSouth.pageSubtitle}
         </p>
       </header>
 
       <main class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-10">
-        <OurSouthGrid client:load articles={t.ourSouth.articles} />
+        <OurSouthGrid client:load articles={t.ourSouth.articles} lang={lang} />
       </main>
     </div>
   </div>

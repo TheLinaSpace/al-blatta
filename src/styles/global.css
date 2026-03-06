@@ -14,6 +14,7 @@
   --font-mansalva: "Mansalva", cursive;
   --font-heebo: "Heebo", sans-serif;
   --font-aref-ruqaa: "Aref Ruqaa", serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 @keyframes fade-in {
@@ -27,9 +28,8 @@
   }
 }
 
-/* Arabic pages: override all Latin display fonts with Aref Ruqaa */
+/* Arabic pages: override Latin display fonts with Aref Ruqaa */
 html[lang="ar"] {
-  --font-heebo: "Aref Ruqaa", serif;
   --font-mansalva: "Aref Ruqaa", serif;
 }
 

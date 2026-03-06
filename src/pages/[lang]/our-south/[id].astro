@@ -1,0 +1,47 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { Navbar } from "../../../components/Navbar";
+import { OurSouthArticleDetail } from "../../../components/OurSouthArticleDetail";
+import { translations, type Lang } from "../../../data/translations";
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const lang of ["ar", "en"] as const) {
+    for (const article of translations[lang].ourSouth.articles) {
+      paths.push({ params: { lang, id: article.id } });
+    }
+  }
+  return paths;
+}
+
+const lang = Astro.params.lang as Lang;
+const altLang: Lang = lang === "ar" ? "en" : "ar";
+const t = translations[lang];
+
+const article = t.ourSouth.articles.find((a) => a.id === Astro.params.id)!;
+const backLabel = lang === "ar" ? "العودة إلى جنوبنا" : "Back to Our South";
+---
+
+<Layout
+  title={`${t.siteTitle} — ${article.title}`}
+  description={article.excerpt}
+  lang={lang}
+  altLang={altLang}
+  altHref={`/${altLang}/our-south/${article.id}`}
+>
+  <Navbar client:load nav={t.nav} lang={lang} altLang={altLang} activePage="our-south" />
+
+  <main>
+    <OurSouthArticleDetail
+      article={article}
+      lang={lang}
+      backLabel={backLabel}
+    />
+  </main>
+
+  <footer
+    class="text-center text-stone-400 text-sm py-6 sm:py-8 border-t border-stone-100 mt-8 sm:mt-12"
+  >
+    {t.footer}
+  </footer>
+</Layout>

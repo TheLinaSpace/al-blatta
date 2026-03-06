@@ -1,0 +1,108 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Navbar } from "../../components/Navbar";
+import { translations, type Lang } from "../../data/translations";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "ar" } }, { params: { lang: "en" } }];
+}
+
+const lang = Astro.params.lang as Lang;
+const altLang: Lang = lang === "ar" ? "en" : "ar";
+const t = translations[lang];
+const s = t.ourStory;
+---
+
+<Layout
+  title={`${t.siteTitle} — ${s.pageTitle}`}
+  description={s.storyText.slice(0, 160)}
+  lang={lang}
+  altLang={altLang}
+  altHref={`/${altLang}/our-story`}
+>
+  <div class="relative">
+    <div class="relative">
+      <Navbar client:load nav={t.nav} lang={lang} altLang={altLang} activePage="our-story" />
+
+      <header class="text-center px-4 pt-4 sm:pt-6 pb-0">
+        <h1
+          class={`${lang === "ar" ? "font-aref-ruqaa text-[28px] sm:text-[42px]" : "font-mansalva text-[24px] sm:text-[36px]"} text-black mx-auto leading-snug`}
+        >
+          {s.pageTitle}
+        </h1>
+      </header>
+
+      <!-- Map Section - Desktop -->
+      <section class="hidden lg:block max-w-[1200px] mx-auto px-4 mt-1">
+        <div class="relative w-full" style="aspect-ratio: 1.36;">
+
+          <!-- All maps combined image -->
+          <img src="/all-maps.png" alt="Lebanon regions map" class="absolute inset-y-0 left-0 h-full object-contain object-left" style="width: 75%;" />
+
+          <!-- === Stats (Right side, below map center) === -->
+          <div class={`absolute ${lang === "ar" ? "text-right" : "text-left"}`} style="left: 66%; top: 62.5%;">
+            <p class="text-4xl xl:text-[56px] font-bold font-heebo text-black leading-none">
+              {s.statArea}
+            </p>
+            <p class="mt-4 text-lg xl:text-xl font-heebo text-stone-500">
+              {s.statOutOf} <span class="text-2xl xl:text-[32px] font-bold text-black">{s.statTotal}</span>
+            </p>
+            <p class="mt-5 text-lg xl:text-xl font-heebo text-stone-700 leading-relaxed" style="max-width: 320px;">
+              {s.statMessage}
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Map Section - Mobile / Tablet -->
+      <section class="lg:hidden px-4 py-6 sm:py-10">
+        <div class="flex flex-col items-center gap-6 sm:gap-8">
+          <!-- Lebanon Map -->
+          <div class="w-full max-w-[320px] sm:max-w-[400px]">
+            <img src="/lebanon-map.png" alt="Lebanon map" class="w-full h-auto" />
+          </div>
+
+          <!-- Region Labels -->
+          <div class={`flex flex-wrap justify-center gap-x-3 gap-y-1 text-sm font-heebo font-medium text-stone-600 ${lang === "ar" ? "direction-rtl" : ""}`}>
+            <span>{s.regions.nabatieh}</span><span class="text-stone-300">|</span>
+            <span>{s.regions.jezzine}</span><span class="text-stone-300">|</span>
+            <span>{s.regions.zahrani}</span><span class="text-stone-300">|</span>
+            <span>{s.regions.sidon}</span><span class="text-stone-300">|</span>
+            <span>{s.regions.bintJbeil}</span><span class="text-stone-300">|</span>
+            <span>{s.regions.tyre}</span><span class="text-stone-300">|</span>
+            <span>{s.regions.hasbayaMarjeyoun}</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="text-center">
+            <p class="text-4xl sm:text-5xl font-bold font-heebo text-black leading-none">
+              {s.statArea}
+            </p>
+            <p class="mt-2 text-lg font-heebo text-stone-500">
+              {s.statOutOf} <span class="text-2xl sm:text-3xl font-bold text-black">{s.statTotal}</span>
+            </p>
+            <p class="mt-3 text-lg font-heebo text-stone-700 max-w-xs mx-auto leading-relaxed">
+              {s.statMessage}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Story Section -->
+      <section class="max-w-[920px] mx-auto px-6 sm:px-8 pt-12 pb-8">
+        {s.storyText.split('\n\n').map((paragraph: string) => (
+          <p class={`text-base sm:text-lg font-heebo text-stone-800 leading-relaxed mb-6 ${lang === "ar" ? "text-right" : "text-justify"}`}>
+            {paragraph}
+          </p>
+        ))}
+      </section>
+    </div>
+  </div>
+
+  <footer
+    class="text-center text-stone-400 text-sm py-6 sm:py-8 border-t border-stone-100 mt-8 sm:mt-12"
+  >
+    {t.footer}
+  </footer>
+</Layout>

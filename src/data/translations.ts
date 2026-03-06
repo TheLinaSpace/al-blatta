@@ -6,7 +6,10 @@ export interface OurSouthArticle {
   id: string;
   title: string;
   excerpt: string;
+  content: string[];
   category: string;
+  author: string;
+  date: string;
   coverImage: string;
   coverImageAlt: string;
 }
@@ -15,6 +18,24 @@ export interface OurSouthContent {
   pageTitle: string;
   pageSubtitle: string;
   articles: OurSouthArticle[];
+}
+
+export interface OurStoryContent {
+  pageTitle: string;
+  statArea: string;
+  statTotal: string;
+  statOutOf: string;
+  statMessage: string;
+  storyText: string;
+  regions: {
+    nabatieh: string;
+    jezzine: string;
+    zahrani: string;
+    sidon: string;
+    bintJbeil: string;
+    tyre: string;
+    hasbayaMarjeyoun: string;
+  };
 }
 
 export interface Translations {
@@ -45,6 +66,7 @@ export interface Translations {
   categories: string[];
   recipes: Recipe[];
   ourSouth: OurSouthContent;
+  ourStory: OurStoryContent;
 }
 
 export const translations: Record<Lang, Translations> = {
@@ -337,45 +359,42 @@ export const translations: Record<Lang, Translations> = {
       articles: [
         {
           id: "villages",
-          title: "قرى الجنوب: حجارة تحكي التاريخ",
+          title: "الشجرة السرية",
           excerpt:
-            "من بنت جبيل إلى مرجعيون، كل قرية في جنوب لبنان تحمل قصة عمرها قرون. بيوت حجرية تطل على وديان خضراء، وأزقة ضيقة تعبق برائحة الزعتر والتراب.",
-          category: "قرى",
-          coverImage:
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=500&fit=crop",
-          coverImageAlt: "قرية جنوبية لبنانية تقليدية ببيوت حجرية",
-        },
-        {
-          id: "traditions",
-          title: "تقاليد لا تموت: من الدبكة إلى المونة",
-          excerpt:
-            "في كل موسم، تنبض قرى الجنوب بطقوس توارثتها الأجيال. من تحضير المونة في الصيف إلى حلقات الدبكة في الأعراس، هذه التقاليد ليست مجرد عادات — إنها هوية شعب بأكمله.",
-          category: "تقاليد",
-          coverImage:
-            "https://images.unsplash.com/photo-1606820854416-439b3305ff39?w=800&h=500&fit=crop",
-          coverImageAlt: "نساء يحضّرن المونة الموسمية في قرية جنوبية",
-        },
-        {
-          id: "landscapes",
-          title: "مناظر الجنوب: حيث تعانق الجبال البحر",
-          excerpt:
-            "تلال خضراء مكسوة بأشجار الزيتون، وديان عميقة يشقها نهر الليطاني، وشواطئ صخرية تمتد من صور إلى الناقورة. طبيعة الجنوب ليست مجرد مشهد — إنها روح المكان.",
-          category: "طبيعة",
-          coverImage:
-            "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=500&fit=crop",
-          coverImageAlt: "مناظر طبيعية خلابة في جنوب لبنان مع أشجار الزيتون",
-        },
-        {
-          id: "heritage",
-          title: "تراث الأرض: زيتون وزعتر وحكايات أجداد",
-          excerpt:
-            "زيت الزيتون ليس مجرد مكوّن في المطبخ الجنوبي — إنه رمز للصمود والارتباط بالأرض. من موسم القطاف إلى معاصر الزيت التقليدية، اكتشف كيف يحافظ أهل الجنوب على تراثهم الزراعي.",
-          category: "تراث",
-          coverImage:
-            "https://images.unsplash.com/photo-1445282768818-728615cc910a?w=800&h=500&fit=crop",
-          coverImageAlt: "أشجار زيتون معمّرة في جنوب لبنان",
+            "ذكريات طفولة في قرية تول بجنوب لبنان — عن سنديانة ضخمة كانت ملعبنا وملاذنا، وعن أيام الصيف التي لا تُنسى في أحضان وادي الدوير.",
+          content: [
+            "أردتُ أن تكون أولى قصصي عن مقطعٍ إيجابي من حياتي قضيتُه في الجنوب، وأنا أحمله في القلب قبل أن أحمله على الورق.",
+            "لا أزال أذكر أيام طفولتي في قرية تول، قضاء النبطية. عشتُ فيها من سابعة عمري حتى الثالثة عشرة. لم تكن تول جميلةً على الدوام، غير أن عطلة الصيف كانت استثناءً مضيئاً في كل مرة. عائلتي من خمسة أفراد سواي، أما عائلة أمي فكانت كبيرة، تضمّ آنذاك سبعةً وعشرين نفساً، ثم زاد العدد حين تزوّج خالي للمرة الثانية.",
+            "في صيف عام ٢٠٠٧، في منزل تيتا المتوارَى في أحضان وادي الدوير، كنّا نلعب، أنا وأولاد خالتي، قرابة كل يوم. بينما كان الأهل يُعيدون رأب صدوع الحياة في أعقاب حرب ٢٠٠٦، كنّا نحن نمرح ونلهو كأن الدنيا لنا وحدنا.",
+            "كنتُ محظوظة؛ خمسة أطفال من عمري، والوادي خالٍ من المقيمين. كانت تيتا تضجر من أصواتنا العالية، لكنّنا لم نكن نلتفت، إذ كانت لنا مهمة لا تحتمل التأجيل. نستيقظ باكراً، نحتسي الشاي مع لقمة اللبنة، ثم نركض نحو نهاية الوادي. ننظر يميناً ثم يساراً. لا أحد. فنواصل مهمتنا: تسلّق الجبل \"الكبير\"، هكذا أسميناه نحن. لم يكن التسلق سهلاً ولا قصيراً، لكنّنا كنّا قد رسمنا خريطة، وخبّأنا طعاماً في أماكن سرية على امتداد الطريق. والهدف كان واحداً لا يتبدّل: الوصول إلى الشجرة السرية.",
+            "كانت الطريق طويلة، تتخلّلها الأشواك وتعترضها السلاحف الصغيرة، وعلى جانبيها نبتات الحميض تُرافق خطانا. في منتصف الظهيرة، كنّا نصل. تلك الشجرة. سنديانة ضخمة شامخة، لم تطأها أقدام كثيرة ولم تلوّثها أيدٍ غريبة. ربما كانت في عيون غيرنا شجرةً عادية، لكنّها كانت لنا بيتاً ومِلعباً وظلاً من شمس الجنوب الحارقة. لم تكن اكتشافنا وحدنا، بل إرثٌ عائلي تناقله جيلٌ عن جيل.",
+            "تحت تلك الشجرة، لعبنا البيت والغميضة، وبكينا وتشاجرنا وتصالحنا وضحكنا وتحدّثنا بما لا يُقال في مكان آخر. كانت الشجرة السرية، عبر كل تلك السنين، حارسةً صامتة لأسرار طفولتنا وراعيةً لذكرياتنا. وحين يميل النهار نحو الغروب، كان يصلنا عبر الوادي صوت زوجة خالي يناديننا: حان وقت الشاي والصفوف.",
+            "كانت أياماً جميلة. آخر مرة زرتُ فيها الشجرة السرية كانت منذ ثماني سنوات. لم تعد سريةً؛ أحاطت بها البيوت من كل جانب، وصارت مجرد شجرة في حيٍّ جديد، ربما تُقطع يوماً ما. لكنّها ستظل راسخةً في ذاكرتي، جزءاً لا يُنتزع من طفولتي في الجنوب.",
+          ],
+          category: "لبنة, صفوف",
+          author: "بقلم لينا ش.",
+          date: "٦ آذار ٢٠٢٦",
+          coverImage: "/oak-tree.jpeg",
+          coverImageAlt: "شجرة سنديانة في جنوب لبنان",
         },
       ],
+    },
+    ourStory: {
+      pageTitle: "قصتنا",
+      statArea: "٢,١٠٠ متر مربع",
+      statTotal: "١٠,٤٥٢ متر مربع",
+      statOutOf: "من أصل",
+      statMessage: "كانت وستظل دائماً جنوب لبنان",
+      storyText: "مرحباً، اسمي لينا. أنا لبنانية من بنت جبيل. بدأت مشروع \"عالبلاطة\" بسبب قصة صغيرة. كنت أتناول فنجان قهوة مع أمي وصديقاتها أثناء حرب 2024. كنا نشاهد الأخبار، نشاهد إ*رائيل تقصف منازلنا وبلداتنا وشعبنا. في خضم هذه الأجواء المضطربة والحزينة، سألت أمي عن طبقها المفضل من قريتها في الجنوب. بدأت تبتسم وتتحدث عن المجدرة الحمرا، مع الحديث المعتاد عن كيفية طبخ المجدرة. كانت صديقتها تتحدث عن الكبة النية على البلاطة (بلاط الرخام). بدأت كلتاهما تتحدثان عن اكلات الجنوب بشغف كبير. جعلني هذا أدرك كيف أن الطعام جعلني أكثر دراية بتراث الجنوب، وكيف أن الطعام يجمنا دائماً.\n\nعالبلاطة هي مجتمع الكتروني حيث يمكن لأهالي جنوب لبنان مشاركة وصفات الطعام وقصص عن الجنوب. دعونا نشارك وصفات عماتنا وخالاتنا وقصصهن مع العالم. في الجنوب، على البلاطة، نطبخ ونمشي ونتحدث ونأكل. دعونا نحافظ على تراثنا من خلال المشاركة البلاطة مع العالم!",
+      regions: {
+        nabatieh: "النبطية",
+        jezzine: "جزين",
+        zahrani: "الزهراني",
+        sidon: "صيدا",
+        bintJbeil: "بنت جبيل",
+        tyre: "صور",
+        hasbayaMarjeyoun: "حاصبيا ومرجعيون",
+      },
     },
   },
   en: {
@@ -667,45 +686,42 @@ export const translations: Record<Lang, Translations> = {
       articles: [
         {
           id: "villages",
-          title: "Southern Villages: Stones That Tell History",
+          title: "The Secret Tree",
           excerpt:
-            "From Bint Jbeil to Marjayoun, every village in South Lebanon carries a story centuries old. Stone houses overlooking green valleys, narrow alleys filled with the scent of thyme and earth.",
-          category: "Villages",
-          coverImage:
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=500&fit=crop",
-          coverImageAlt: "Traditional South Lebanese village with stone houses",
-        },
-        {
-          id: "traditions",
-          title: "Living Traditions: From Dabke to Mouneh",
-          excerpt:
-            "With every season, the villages of the South come alive with rituals passed down through generations. From preparing mouneh in summer to dabke circles at weddings, these traditions are the identity of an entire people.",
-          category: "Traditions",
-          coverImage:
-            "https://images.unsplash.com/photo-1606820854416-439b3305ff39?w=800&h=500&fit=crop",
-          coverImageAlt: "Women preparing seasonal mouneh in a southern village",
-        },
-        {
-          id: "landscapes",
-          title: "Southern Landscapes: Where Mountains Meet the Sea",
-          excerpt:
-            "Green hills draped in olive trees, deep valleys carved by the Litani River, and rocky shores stretching from Tyre to Naqoura. The nature of the South is not just a view \u2014 it is the spirit of the place.",
-          category: "Landscapes",
-          coverImage:
-            "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=500&fit=crop",
-          coverImageAlt: "Scenic South Lebanon landscape with olive trees",
-        },
-        {
-          id: "heritage",
-          title: "Heritage of the Land: Olives, Thyme & Ancestral Tales",
-          excerpt:
-            "Olive oil is not just an ingredient in southern cooking \u2014 it is a symbol of resilience and connection to the land. From harvest season to traditional oil presses, discover how the people of the South preserve their heritage.",
-          category: "Heritage",
-          coverImage:
-            "https://images.unsplash.com/photo-1445282768818-728615cc910a?w=800&h=500&fit=crop",
-          coverImageAlt: "Ancient olive trees in South Lebanon",
+            "Childhood memories from the village of Tule in South Lebanon — a towering oak tree that was our playground and refuge, and unforgettable summer days in the embrace of Wadi al-Duwair.",
+          content: [
+            "I wanted my first story to be about a positive part of my life that I spent in the south, which I carry in my heart before I put it on paper.",
+            "I still remember my childhood days in the village of Tule, in the district of Nabatieh. I lived there from the age of seven to thirteen. Tule was not always beautiful, but the summer holidays were always a bright exception. My family consisted of five members besides myself, while my mother's family was large, comprising twenty-seven people at the time, and then increasing when my uncle married for the second time.",
+            "In the summer of 2007, at Teta's house tucked away in the embrace of Wadi al-Duwair, my cousins and I played together almost every day. While our parents were rebuilding their lives in the aftermath of the 2006 war, we played and had fun as if the world belonged to us alone.",
+            "I was lucky: five children my age and no other residents in the valley. Teta was annoyed by our loud voices, but we paid no attention, as we had a mission that could not be delayed. We would wake up early, drink tea with a bite of labneh, and then run to the end of the valley. We looked right and left. No one was there. So we continued our mission: to climb the \"big\" mountain, as we called it. The climb was neither easy nor short, but we had drawn a map and hidden food in secret places along the way. We had one unchanging goal: to reach the secret tree.",
+            "The road was long, strewn with thorns and small turtles, and lined with sorrel plants. At midday, we arrived. That tree. A huge, towering oak tree, untouched by many feet and unpolluted by foreign hands. To others, it may have been just an ordinary tree, but to us it was a home, a playground, and shade from the scorching southern sun. It was not our discovery alone, but a family legacy passed down from generation to generation.",
+            "Under that tree, we played house and hide-and-seek, we cried and fought and made up, we laughed and talked about things we wouldn't talk about anywhere else. Throughout all those years, the secret tree was the silent guardian of our childhood secrets and the keeper of our memories. As the day drew to a close, my uncle's wife would call out to us across the valley: it was time for tea and homework.",
+            "Those were beautiful days. The last time I visited the secret tree was eight years ago. It was no longer secret; houses surrounded it on all sides, and it became just another tree in a new neighborhood, perhaps to be cut down one day. But it will remain etched in my memory, an inseparable part of my childhood in the south.",
+          ],
+          category: "Labneh, Sfouf",
+          author: "by Lina C.",
+          date: "March 6, 2026",
+          coverImage: "/oak-tree.jpeg",
+          coverImageAlt: "Oak tree in South Lebanon",
         },
       ],
+    },
+    ourStory: {
+      pageTitle: "Our Story",
+      statArea: "2,100 sqm",
+      statTotal: "10,452 sqm",
+      statOutOf: "out of",
+      statMessage: "is and will always be the South of Lebanon",
+      storyText: "Hi, my name is Lina. I am Lebanese, from Bint Jbeil. I started Al Blatta because of a heartwarming story. I was having a normal coffee chat with my mom and her friends amidst the 2024 war. We were watching the news, watching Israel bombing our homes, our towns, and our people. Amidst this stressful situation, I asked my mom about her favorite dish from her village in the south. She started smiling and talking about Mujadara, along with the usual discussion of how Mujadara is made. Her friend was talking about Kibbeh Nayyeh on the Blatta (marble tile). They both started talking about food from the south with a lot of passion. This made me aware of how food made me more knowledgeable about the heritage of the south, and how food brought us together.\n\nAl Blatta is a community where south Lebanese people can share food recipes and stories about the south. Let's share our aunties' recipes and stories with the world. In the south, on Al Blatta, we cook, walk, talk, and eat. Let's preserve our heritage through sharing!",
+      regions: {
+        nabatieh: "Nabatieh",
+        jezzine: "Jezzine",
+        zahrani: "Zahrani",
+        sidon: "Sidon",
+        bintJbeil: "Bint Jbeil",
+        tyre: "Tyre",
+        hasbayaMarjeyoun: "Hasbaya & Marjeyoun",
+      },
     },
   },
 };

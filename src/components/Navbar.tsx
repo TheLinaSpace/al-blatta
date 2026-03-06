@@ -86,7 +86,7 @@ export function Navbar({ nav, lang, altLang, activePage = "recipes" }: NavbarPro
           <a href={`/${lang}/our-south`} className={linkClass("our-south")} onClick={() => setMenuOpen(false)}>
             {nav.ourSouth}
           </a>
-          <a href="#" className={linkClass("our-story")} onClick={() => setMenuOpen(false)}>
+          <a href={`/${lang}/our-story`} className={linkClass("our-story")} onClick={() => setMenuOpen(false)}>
             {nav.ourStory}
           </a>
           <a href="#" className={linkClass("contact")} onClick={() => setMenuOpen(false)}>
@@ -112,7 +112,7 @@ export function Navbar({ nav, lang, altLang, activePage = "recipes" }: NavbarPro
           />
         </a>
 
-        <a href="#" className={linkClass("our-story")}>
+        <a href={`/${lang}/our-story`} className={linkClass("our-story")}>
           {nav.ourStory}
         </a>
         <a href="#" className={linkClass("contact")}>

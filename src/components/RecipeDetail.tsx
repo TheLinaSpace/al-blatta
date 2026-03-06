@@ -51,7 +51,7 @@ export function RecipeDetail({
     }`;
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in font-heebo">
       {/* Title */}
       <h2 className={`text-center font-mansalva text-black mb-4 sm:mb-6 ${isAr ? "text-[30px] sm:text-[44px]" : "text-[26px] sm:text-[36px]"}`}>
         {recipe.title}
