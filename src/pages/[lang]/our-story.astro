@@ -37,7 +37,7 @@ const s = t.ourStory;
         <div class="relative w-full" style="aspect-ratio: 1.36;">
 
           <!-- All maps combined image -->
-          <img src="/all-maps.png" alt="Lebanon regions map" class="absolute inset-y-0 left-0 h-full object-contain object-left" style="width: 75%;" />
+          <img src={lang === "ar" ? "/all-maps-ar.png" : "/all-maps.png"} alt="Lebanon regions map" class="absolute inset-y-0 left-0 h-full object-contain object-left" style="width: 75%;" />
 
           <!-- === Stats (Right side, below map center) === -->
           <div class={`absolute ${lang === "ar" ? "text-right" : "text-left"}`} style="left: 66%; top: 62.5%;">

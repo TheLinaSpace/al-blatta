@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Recipe } from "../data/recipes";
 
 interface RecipeCardProps {
@@ -15,42 +14,30 @@ interface RecipeCardProps {
   onSelect?: () => void;
 }
 
-const cardStyles = [
-  { default: "/card-1-default.png", hover: "/card-1-hover.png", bg: "rgba(189,204,233,0.4)" },
-  { default: "/card-2-default.png", hover: "/card-2-hover.png", bg: "rgba(185,63,21,0.4)" },
+const cardBgs = [
+  "/card tile 1.png",
+  "/card tile 2.png",
+  "/card tile 3.png",
 ];
 
-export function RecipeCard({ recipe, labels, index = 0, onSelect }: RecipeCardProps) {
-  const [hovered, setHovered] = useState(false);
-  const styleIndex = index % 2;
-  const style = cardStyles[styleIndex];
+export function RecipeCard({ recipe, index = 0, onSelect }: RecipeCardProps) {
+  const bg = cardBgs[index % cardBgs.length];
 
   return (
     <article
       onClick={onSelect}
-      className="recipe-card group relative rounded-[16px] sm:rounded-[22px] overflow-hidden transition-all duration-300 cursor-pointer"
-      style={{ backgroundColor: style.bg }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      className="recipe-card relative rounded-[10px] overflow-hidden cursor-pointer"
     >
-      {/* Card background images (default + hover) */}
       <img
-        src={style.default}
+        src={bg}
         alt=""
-        className={`absolute inset-0 w-full h-full object-fill pointer-events-none transition-opacity duration-300 ${hovered ? "opacity-0" : "opacity-100"}`}
+        className="absolute inset-0 w-full h-full object-fill pointer-events-none"
         aria-hidden="true"
       />
-      <img
-        src={style.hover}
-        alt=""
-        className={`absolute inset-0 w-full h-full object-fill pointer-events-none transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"}`}
-        aria-hidden="true"
-      />
-
       <div
-        className="w-full text-start relative z-10 aspect-[330/292] flex flex-col items-center justify-center"
+        className="w-full relative z-10 aspect-[330/292] flex flex-col items-center pt-[14%]"
       >
-        <div className="w-28 h-28 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white/50 shadow-sm">
+        <div className="w-[50%] aspect-square rounded-full overflow-hidden">
           <img
             src={recipe.photo}
             alt={recipe.title}
@@ -59,7 +46,7 @@ export function RecipeCard({ recipe, labels, index = 0, onSelect }: RecipeCardPr
           />
         </div>
 
-        <h3 className="text-[22px] sm:text-[32px] text-black font-mansalva mt-3 sm:mt-4 px-4 sm:px-5 text-center">
+        <h3 className="text-[16px] sm:text-[22px] text-black font-mansalva mt-2 sm:mt-3 px-3 sm:px-4 text-center">
           {recipe.title}
         </h3>
       </div>

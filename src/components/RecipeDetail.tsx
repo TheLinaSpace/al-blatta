@@ -18,6 +18,8 @@ interface RecipeDetailProps {
     otherRecipesTab: string;
     expand: string;
     backToRecipes: string;
+    submittedBy: string;
+    storyLabel: string;
   };
   onClose: () => void;
   onSelectRecipe: (recipe: Recipe) => void;
@@ -200,7 +202,7 @@ export function RecipeDetail({
           </div>
 
           {/* Right: Instructions */}
-          <div className={`bg-[#ddac9b] border-3 border-[#b93f15] rounded-[20px] sm:rounded-[30px] p-5 sm:p-8 overflow-y-auto transition-all ${instructionsExpanded ? "" : "max-h-[450px] sm:max-h-[610px]"}`}>
+          <div className={`bg-[#ddac9b] border-3 border-[#b93f15] rounded-[20px] sm:rounded-[30px] p-5 sm:p-8 overflow-y-auto no-scrollbar transition-all ${instructionsExpanded ? "" : "max-h-[450px] sm:max-h-[610px]"}`}>
             <div className="flex items-center justify-between mb-4 sm:mb-6">
               <h3 className={`font-bold text-black ${isAr ? "text-[20px] sm:text-[24px]" : "text-[18px] sm:text-[20px]"}`}>
                 {labels.instructions}
@@ -229,20 +231,33 @@ export function RecipeDetail({
 
       {/* Story Time tab */}
       {activeTab === "story" && (
-        <div className="max-w-2xl mx-auto animate-fade-in">
-          <div className="bg-[#ddac9b] border-3 border-[#b93f15] rounded-[20px] sm:rounded-[30px] p-6 sm:p-10">
-            <div className="flex justify-center mb-6">
-              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-white/50 shadow-md">
-                <img
-                  src={recipe.photo}
-                  alt={recipe.title}
-                  className="w-full h-full object-cover"
-                />
+        <div className="max-w-3xl mx-auto animate-fade-in">
+          <div className={`flex flex-col sm:flex-row gap-8 sm:gap-10 items-start`}>
+            {/* Avatar + submitted by + name */}
+            <div className="flex flex-col items-center gap-3 sm:w-56 flex-shrink-0 w-full">
+              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full bg-stone-100 border-4 border-stone-200 shadow-sm flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-20 h-20 sm:w-28 sm:h-28 text-stone-400" fill="currentColor">
+                  <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                </svg>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <p className={`text-stone-400 ${isAr ? "text-[15px]" : "text-[13px]"}`}>
+                  {labels.submittedBy}
+                </p>
+                <p className={`font-inter font-bold text-center text-black text-[16px]`}>
+                  {recipe.contributor}
+                </p>
               </div>
             </div>
-            <p className="text-[15px] sm:text-[17px] text-black leading-relaxed text-center">
-              {recipe.description}
-            </p>
+            {/* Story label + text */}
+            <div className="flex-1">
+              <p className={`font-bold text-stone-400 uppercase tracking-wide mb-3 ${isAr ? "text-[14px] text-right" : "text-[12px] text-left"}`}>
+                {labels.storyLabel}
+              </p>
+              <p className={`text-stone-700 leading-relaxed text-[14px] ${isAr ? "text-right" : "text-left"}`}>
+                {recipe.story}
+              </p>
+            </div>
           </div>
         </div>
       )}

@@ -33,6 +33,15 @@ html[lang="ar"] {
   --font-mansalva: "Aref Ruqaa", serif;
 }
 
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Decorative confetti/mosaic tiled background */
 .confetti-bg {
   background-image: url("/confetti-tile.png");

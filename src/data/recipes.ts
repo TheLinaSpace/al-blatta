@@ -10,4 +10,6 @@ export interface Recipe {
   servings: number;
   ingredients: string[];
   instructions: string[];
+  contributor: string;
+  story: string;
 }

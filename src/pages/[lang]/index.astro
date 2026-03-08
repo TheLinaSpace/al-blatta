@@ -27,6 +27,8 @@ const labels = {
   otherRecipesTab: t.otherRecipesTab,
   expand: t.expand,
   backToRecipes: t.backToRecipes,
+  submittedBy: t.submittedBy,
+  storyLabel: t.storyLabel,
 };
 ---
 
@@ -38,7 +40,6 @@ const labels = {
   altHref={`/${altLang}/`}
 >
   <div class="relative">
-    <div class="confetti-bg absolute inset-x-0 top-0 h-[20rem] sm:h-[31rem] pointer-events-none opacity-20" />
 
     <div class="relative">
       <Navbar client:load nav={t.nav} lang={lang} altLang={altLang} activePage="recipes" />

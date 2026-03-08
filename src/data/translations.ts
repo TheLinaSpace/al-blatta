@@ -56,6 +56,8 @@ export interface Translations {
   otherRecipesTab: string;
   expand: string;
   backToRecipes: string;
+  submittedBy: string;
+  storyLabel: string;
   footer: string;
   nav: {
     recipes: string;
@@ -89,6 +91,8 @@ export const translations: Record<Lang, Translations> = {
     otherRecipesTab: "وصفات أخرى",
     expand: "توسيع",
     backToRecipes: "العودة للوصفات",
+    submittedBy: "بقلم",
+    storyLabel: "حكاية",
     footer: "Al'Blatta 2026",
     nav: {
       recipes: "الوصفات",
@@ -98,6 +102,39 @@ export const translations: Record<Lang, Translations> = {
     },
     categories: ["الكل", "مقبلات", "أطباق رئيسية", "سلطات", "أطباق جانبية"],
     recipes: [
+      {
+        id: "mujaddara",
+        title: "مجدّرة حمرا",
+        description:
+          "طبق متواضع لكنه شهي — عدس وأرز يعلوهما البصل المقلي المكرمل. طعام البيت بأفضل حالاته.",
+        category: "أطباق جانبية",
+        image: "🍚",
+        photo: "/dishes/mjadara.png",
+        prepTime: "١٠ د",
+        cookTime: "٤٥ د",
+        servings: 6,
+        ingredients: [
+          "١ كوب عدس أخضر أو بني",
+          "١ كوب أرز طويل الحبة",
+          "٣ حبات بصل كبيرة مقطعة شرائح رفيعة",
+          "¼ كوب زيت زيتون",
+          "١ ملعقة صغيرة كمون",
+          "½ ملعقة صغيرة بهار حلو",
+          "ملح وفلفل حسب الرغبة",
+          "لبن للتقديم",
+        ],
+        instructions: [
+          "اطبخي العدس في ماء مملّح حتى يصبح شبه طري، حوالي ٢٠ دقيقة. صفّيه.",
+          "في هذه الأثناء، سخّني زيت الزيتون وقلّبي شرائح البصل على نار متوسطة-هادئة حتى تصبح بنية داكنة، حوالي ٢٥ دقيقة. احتفظي بنصفها للتزيين.",
+          "أضيفي الأرز والبصل المتبقي والكمون والبهار وكوبين ماء إلى العدس.",
+          "اغلي المزيج، ثم خففي النار وغطّي واطبخي لمدة ١٨ دقيقة حتى ينضج الأرز.",
+          "انفشي بالشوكة وزيّني بالبصل المقلي المحتفظ به.",
+          "قدّمي مع اللبن.",
+        ],
+        contributor: "ليلى حطيط",
+        story:
+          "كنت صغيرة حين علّمتني جدتي أن المجدّرة ليست مجرد طعام — إنها صبر. كانت تجلس على البلاطة وتقلّب البصل ببطء وهي تقول: 'اللي بدو يعمل مجدرة لازم يعرف يصبر على البصل.' كان بيتها في النبطية يعبق برائحة البصل المكرمل كل جمعة، والجيران يعرفون أن هذا اليوم يوم مجدرة. حين عدنا إلى القرية بعد الحرب، أول شيء فعلته هو أن طبختُ المجدّرة — لأشعر أنني عدتُ فعلاً.",
+      },
       {
         id: "kibbeh",
         title: "كبّة",
@@ -131,6 +168,9 @@ export const translations: Record<Lang, Translations> = {
           "اقلي في زيت عميق على حرارة ١٧٥ درجة حتى تصبح ذهبية اللون، حوالي ٥-٧ دقائق.",
           "صفّيها على مناديل ورقية وقدّميها ساخنة مع اللبن أو الطحينة.",
         ],
+        contributor: "تيتا فاطمة — بنت جبيل",
+        story:
+          "كانت تيتا فاطمة تبدأ التحضير للكبّة من الصباح الباكر. في كل عيد، كنا نجتمع حولها على المنضدة الكبيرة في المطبخ — كل واحد منا له مهمة. أنا أعجن، وأختي تحشو، وأخي يرتّب على الصينية. لم تكن كبّة تيتا مجرد أكل، كانت طقساً. أتذكر يديها تشكّل الكبّة كالطوربيد بخفة لا تصدّق. وحين أشمّ رائحة القلي اليوم، تعود بي الذاكرة فوراً إلى ذلك المطبخ في بنت جبيل.",
       },
       {
         id: "kibbet-banadoora",
@@ -162,36 +202,9 @@ export const translations: Record<Lang, Translations> = {
           "ضعي أقراص الكبّة في الصلصة واطبخيها على نار هادئة لمدة ٣٠ دقيقة.",
           "زيّني بالبصل الأخضر وقدّمي ساخنة مع الأرز.",
         ],
-      },
-      {
-        id: "mujaddara",
-        title: "مجدّرة",
-        description:
-          "طبق متواضع لكنه شهي — عدس وأرز يعلوهما البصل المقلي المكرمل. طعام البيت بأفضل حالاته.",
-        category: "أطباق جانبية",
-        image: "🍚",
-        photo: "/dishes/mjadara.png",
-        prepTime: "١٠ د",
-        cookTime: "٤٥ د",
-        servings: 6,
-        ingredients: [
-          "١ كوب عدس أخضر أو بني",
-          "١ كوب أرز طويل الحبة",
-          "٣ حبات بصل كبيرة مقطعة شرائح رفيعة",
-          "¼ كوب زيت زيتون",
-          "١ ملعقة صغيرة كمون",
-          "½ ملعقة صغيرة بهار حلو",
-          "ملح وفلفل حسب الرغبة",
-          "لبن للتقديم",
-        ],
-        instructions: [
-          "اطبخي العدس في ماء مملّح حتى يصبح شبه طري، حوالي ٢٠ دقيقة. صفّيه.",
-          "في هذه الأثناء، سخّني زيت الزيتون وقلّبي شرائح البصل على نار متوسطة-هادئة حتى تصبح بنية داكنة، حوالي ٢٥ دقيقة. احتفظي بنصفها للتزيين.",
-          "أضيفي الأرز والبصل المتبقي والكمون والبهار وكوبين ماء إلى العدس.",
-          "اغلي المزيج، ثم خففي النار وغطّي واطبخي لمدة ١٨ دقيقة حتى ينضج الأرز.",
-          "انفشي بالشوكة وزيّني بالبصل المقلي المحتفظ به.",
-          "قدّمي مع اللبن.",
-        ],
+        contributor: "أم رامي — تول، النبطية",
+        story:
+          "في بيتنا في تول، كانت الجمعة تعني كبّة بندورة. كانت أمي تطبخها في الطنجرة الكبيرة، ورائحتها تملأ الحارة. الجيران كانوا يعرفون أن أم رامي تطبخ — وأحياناً كانوا يقرعون الباب ويطلبون منها أن تشاركهم. بعد سنوات من السفر والغربة، اكتشفتُ أن هذه الرائحة هي ما أشتاق إليه أكثر من أي شيء آخر. ليس الرائحة وحدها، بل كل ما ورائها — بيتنا والحارة والجيران وصوت أمي.",
       },
       {
         id: "falafel",
@@ -226,6 +239,9 @@ export const translations: Record<Lang, Translations> = {
           "اقلي في زيت عميق على حرارة ١٧٥ درجة لمدة ٣-٤ دقائق حتى تصبح ذهبية داكنة.",
           "قدّمي في الخبز العربي مع صلصة الطحينة والمخللات والخضار.",
         ],
+        contributor: "خالة سمية — صور",
+        story:
+          "كانت خالة سمية تنقع الحمّص من ليلة الخميس. نحن الأولاد كنا نعرف ذلك فنصحو يوم الجمعة مبكرين، ننتظر رائحة الفلافل تصل إلى الغرفة. كانت تحشو الخبز العربي بالفلافل والطماطم والنعناع وتسكب الطحينة ببساطة لا تُقاوم. كانت صور آنذاك هادئة في الصباح الباكر، وصوت المقلاة وضحكاتنا كانا الموسيقى الوحيدة. تلك الفلافل لم أجد لها مثيلاً حتى اليوم.",
       },
       {
         id: "tabbouleh",
@@ -234,7 +250,7 @@ export const translations: Record<Lang, Translations> = {
           "سلطة بقدونس نابضة بالحياة مع البرغل والبندورة والنعناع وتتبيلة الليمون وزيت الزيتون.",
         category: "سلطات",
         image: "🥗",
-        photo: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop",
+        photo: "/tabouleh.jpg",
         prepTime: "٢٠ د",
         cookTime: "٠ د",
         servings: 6,
@@ -255,6 +271,9 @@ export const translations: Record<Lang, Translations> = {
           "تبّلي بزيت الزيتون وعصير الليمون.",
           "أضيفي الملح والفلفل. قدّمي على أوراق الخس.",
         ],
+        contributor: "نور — يارون، بنت جبيل",
+        story:
+          "في يارون، كانت بقعة بقدونس جزءاً من كل بيت. أتذكر كيف كنت أساعد أمي في قطفه صباحاً، والندى لا يزال على أوراقه. كانت التبّولة في الجنوب فناً — البقدونس يُفرم بالسكين وليس في المحضرة، والليمون يُعصر لحظة التقديم لا قبلها. كانت أمي ترفض أن تضع الملح إلا في آخر لحظة، وتقول: 'التبّولة زي العمر، كل ما تأخّرت كانت أحلى.'",
       },
       {
         id: "fattoush",
@@ -288,6 +307,9 @@ export const translations: Record<Lang, Translations> = {
           "قلّبي السلطة مع التتبيلة.",
           "أضيفي رقائق الخبز المحمّص قبل التقديم مباشرة.",
         ],
+        contributor: "ريا — قانا",
+        story:
+          "لم نكن في قانا نرمي الخبز أبداً. الرغيف القديم يصبح فتّوش، وهذا كان درساً نتعلّمه قبل أي شيء آخر. كنت أنتظر أن يتصلّب الخبز لأقطّعه وأقلّيه. وكانت الحديقة تعطينا كل شيء — الخيار والبندورة والنعناع والبقدونس. كنا نجلس تحت العريشة بعد الظهر، والهواء دافئ والسماء زرقاء، ونأكل الفتّوش مع اللبن البارد. كانت تلك البساطة كل شيء.",
       },
       {
         id: "shawarma",
@@ -321,6 +343,9 @@ export const translations: Record<Lang, Translations> = {
           "اتركيه يرتاح ٥ دقائق، ثم قطّعيه شرائح رفيعة.",
           "قدّمي في الخبز العربي الدافئ مع صلصة الثوم واللفت المخلل والخضار الطازجة.",
         ],
+        contributor: "أبو علي — صيدا",
+        story:
+          "كانت محلّة الشاورما عند مدخل الحارة المكان الذي يجمعنا بعد المدرسة كل يوم. صاحبها كان يعرف كل واحد منا بالاسم، ويعرف من يحب الثوم كثيراً ومن يتجنّبه. رائحة الدجاج المتبّل على النار كانت تصلنا قبل أن نصل إلى الحارة. كانت أيام بسيطة. الآن حين أطبخ الشاورما بعيداً عن صيدا، أضع نفس البهارات وأغمض عيني لحظة — وأعود.",
       },
       {
         id: "baba-ghanoush",
@@ -329,7 +354,7 @@ export const translations: Record<Lang, Translations> = {
           "غموس باذنجان مشوي مدخّن ممزوج بالطحينة والثوم والليمون. غني وكريمي ولا يُقاوم.",
         category: "مقبلات",
         image: "🍆",
-        photo: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=400&fit=crop",
+        photo: "/baba-ghanoush.jpg",
         prepTime: "١٠ د",
         cookTime: "٤٠ د",
         servings: 6,
@@ -350,6 +375,9 @@ export const translations: Record<Lang, Translations> = {
           "اخلطي مع الطحينة وعصير الليمون والثوم وزيت الزيتون والكمون والملح.",
           "افرديه على طبق، رشّي زيت الزيتون وحب الرمّان فوقه.",
         ],
+        contributor: "جدتي منى — مرجعيون",
+        story:
+          "كانت جدتي منى تشوي الباذنجان على نار الحطب في الفرن الطيني خلف البيت في مرجعيون. كانت ترفض الفرن الكهربائي — 'ما بيجي طعمة' كما كانت تقول دائماً. أتذكر الدخان الأبيض يرتفع من الفرن، ورائحة الباذنجان المتفحّم تمتزج برائحة الزعتر البري من التلال المحيطة. حين تهرسه مع الطحينة والثوم، كان الطعم مختلفاً تماماً — فيه شيء من الأرض والنار والذاكرة. لا أجد ذلك الطعم في أي مكان آخر.",
       },
     ],
     ourSouth: {
@@ -416,6 +444,8 @@ export const translations: Record<Lang, Translations> = {
     otherRecipesTab: "Other Recipes",
     expand: "Expand",
     backToRecipes: "Back to Recipes",
+    submittedBy: "Submitted by",
+    storyLabel: "Their Story",
     footer: "Al'Blatta 2026",
     nav: {
       recipes: "Recipes",
@@ -425,6 +455,39 @@ export const translations: Record<Lang, Translations> = {
     },
     categories: ["All", "Appetizers", "Main Dishes", "Salads", "Sides"],
     recipes: [
+      {
+        id: "mujaddara",
+        title: "Mujaddara Hamra",
+        description:
+          "Humble yet hearty \u2014 lentils and rice topped with deeply caramelized onions. Comfort food at its finest.",
+        category: "Sides",
+        image: "🍚",
+        photo: "/dishes/mjadara.png",
+        prepTime: "10 min",
+        cookTime: "45 min",
+        servings: 6,
+        ingredients: [
+          "1 cup green or brown lentils",
+          "1 cup long-grain rice",
+          "3 large onions, thinly sliced",
+          "1/4 cup olive oil",
+          "1 tsp cumin",
+          "1/2 tsp allspice",
+          "Salt and pepper to taste",
+          "Plain yogurt for serving",
+        ],
+        instructions: [
+          "Cook lentils in salted water until almost tender, about 20 minutes. Drain.",
+          "Meanwhile, heat olive oil and caramelize onion slices over medium-low heat until deep brown, about 25 minutes. Set aside half for garnish.",
+          "Add rice, remaining onions, cumin, allspice, and 2 cups water to the lentils.",
+          "Bring to a boil, reduce heat, cover, and cook for 18 minutes until rice is tender.",
+          "Fluff with a fork and top with the reserved crispy caramelized onions.",
+          "Serve with a dollop of plain yogurt.",
+        ],
+        contributor: "Leila Hoteit",
+        story:
+          "I was young when my grandmother taught me that mujaddara is not just food — it's patience. She would sit on the balcony and stir the onions slowly, saying: 'Anyone who wants to make mujaddara has to learn to be patient with the onions.' Her home in Nabatieh smelled of caramelized onions every Friday, and the neighbours always knew what day it was. When we returned to the village after the war, the first thing I did was cook mujaddara — to feel that I had truly come home.",
+      },
       {
         id: "kibbeh",
         title: "Kibbeh",
@@ -458,6 +521,9 @@ export const translations: Record<Lang, Translations> = {
           "Deep fry in oil at 350\u00b0F until golden brown, about 5-7 minutes.",
           "Drain on paper towels and serve hot with yogurt or tahini.",
         ],
+        contributor: "Teta Fatima — Bint Jbeil",
+        story:
+          "Teta Fatima would start preparing kibbeh from early in the morning. On every holiday, we gathered around the big kitchen table — each of us with a task. I would knead, my sister would stuff, and my brother would arrange them on the tray. Teta's kibbeh was not just food, it was a ritual. I remember her hands shaping each piece into a torpedo with effortless grace. Now whenever I smell deep frying, my mind travels straight back to that kitchen in Bint Jbeil.",
       },
       {
         id: "kibbet-banadoora",
@@ -489,36 +555,9 @@ export const translations: Record<Lang, Translations> = {
           "Place kibbeh patties in the sauce and simmer on low heat for 30 minutes.",
           "Garnish with green onions and serve hot with rice.",
         ],
-      },
-      {
-        id: "mujaddara",
-        title: "Mujaddara",
-        description:
-          "Humble yet hearty \u2014 lentils and rice topped with deeply caramelized onions. Comfort food at its finest.",
-        category: "Sides",
-        image: "🍚",
-        photo: "/dishes/mjadara.png",
-        prepTime: "10 min",
-        cookTime: "45 min",
-        servings: 6,
-        ingredients: [
-          "1 cup green or brown lentils",
-          "1 cup long-grain rice",
-          "3 large onions, thinly sliced",
-          "1/4 cup olive oil",
-          "1 tsp cumin",
-          "1/2 tsp allspice",
-          "Salt and pepper to taste",
-          "Plain yogurt for serving",
-        ],
-        instructions: [
-          "Cook lentils in salted water until almost tender, about 20 minutes. Drain.",
-          "Meanwhile, heat olive oil and caramelize onion slices over medium-low heat until deep brown, about 25 minutes. Set aside half for garnish.",
-          "Add rice, remaining onions, cumin, allspice, and 2 cups water to the lentils.",
-          "Bring to a boil, reduce heat, cover, and cook for 18 minutes until rice is tender.",
-          "Fluff with a fork and top with the reserved crispy caramelized onions.",
-          "Serve with a dollop of plain yogurt.",
-        ],
+        contributor: "Umm Rami — Toul, Nabatieh",
+        story:
+          "In our home in Toul, Friday meant kibbet banadoora. My mother would cook it in the large pot and the aroma would fill the whole neighbourhood. The neighbours always knew when Umm Rami was cooking — and sometimes they would knock on the door asking to share. Years of travel and living abroad taught me that this smell is what I miss most of all. Not just the smell, but everything behind it — our home, the lane, the neighbours, and my mother's voice.",
       },
       {
         id: "falafel",
@@ -553,6 +592,9 @@ export const translations: Record<Lang, Translations> = {
           "Deep fry at 350\u00b0F for 3-4 minutes until deep golden brown.",
           "Serve in pita with tahini sauce, pickles, and vegetables.",
         ],
+        contributor: "Khala Samia — Tyre",
+        story:
+          "Khala Samia would soak the chickpeas every Thursday night. We children knew this, so we would wake up early on Friday mornings, waiting for the smell of falafel to reach our room. She would stuff warm pita with falafel, tomatoes, mint, and a generous drizzle of tahini with irresistible simplicity. Tyre was quiet in those early mornings, and the sound of the frying pan and our laughter was the only music. I have never found falafel that comes close to hers.",
       },
       {
         id: "tabbouleh",
@@ -561,7 +603,7 @@ export const translations: Record<Lang, Translations> = {
           "A vibrant parsley salad with bulgur, tomatoes, mint, and a bright lemon-olive oil dressing.",
         category: "Salads",
         image: "🥗",
-        photo: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop",
+        photo: "/tabouleh.jpg",
         prepTime: "20 min",
         cookTime: "0 min",
         servings: 6,
@@ -582,6 +624,9 @@ export const translations: Record<Lang, Translations> = {
           "Dress with olive oil and lemon juice.",
           "Season with salt and pepper. Serve on romaine lettuce leaves.",
         ],
+        contributor: "Nour — Yaroun, Bint Jbeil",
+        story:
+          "In Yaroun, every home had a patch of parsley in the garden. I remember helping my mother pick it in the mornings, the leaves still damp with dew. Tabbouleh in the south was an art — the parsley had to be chopped by hand, never in a food processor, and the lemon squeezed at the very last moment. My mother always added salt only at the end. She used to say: 'Tabbouleh is like life — the longer you wait, the better it gets.'",
       },
       {
         id: "fattoush",
@@ -615,6 +660,9 @@ export const translations: Record<Lang, Translations> = {
           "Toss the salad with the dressing.",
           "Top with crispy pita chips just before serving.",
         ],
+        contributor: "Raya — Qana",
+        story:
+          "In Qana, we never threw away bread. Old pita becomes fattoush — that was one of the first lessons we learned. I would wait for the bread to go stale so I could cut it and fry it. The garden gave us everything else — cucumbers, tomatoes, mint, and parsley. We would sit under the grapevine trellis in the afternoon, the air warm and the sky endlessly blue, eating fattoush with cold yogurt. That simplicity was everything.",
       },
       {
         id: "shawarma",
@@ -648,6 +696,9 @@ export const translations: Record<Lang, Translations> = {
           "Let rest 5 minutes, then slice thinly.",
           "Serve in warm pita with garlic sauce, pickled turnips, and fresh vegetables.",
         ],
+        contributor: "Abu Ali — Sidon",
+        story:
+          "The shawarma shop at the entrance of our neighbourhood was where we all gathered after school. The owner knew each of us by name, and he knew who liked extra garlic and who didn't. The smell of the spiced chicken on the spit would reach us before we even turned the corner. Those were simple days. Now when I make shawarma at home, far from Sidon, I use the same spices and close my eyes for a moment — and I'm back.",
       },
       {
         id: "baba-ghanoush",
@@ -656,7 +707,7 @@ export const translations: Record<Lang, Translations> = {
           "Smoky roasted eggplant dip blended with tahini, garlic, and lemon. Rich, creamy, and irresistible.",
         category: "Appetizers",
         image: "🍆",
-        photo: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=400&fit=crop",
+        photo: "/baba-ghanoush.jpg",
         prepTime: "10 min",
         cookTime: "40 min",
         servings: 6,
@@ -677,6 +728,9 @@ export const translations: Record<Lang, Translations> = {
           "Mix in tahini, lemon juice, garlic, olive oil, cumin, and salt.",
           "Spread on a plate, drizzle with olive oil, and top with pomegranate seeds.",
         ],
+        contributor: "Grandma Mona — Marjeyoun",
+        story:
+          "My grandmother Mona would roast eggplant over a wood fire in the clay oven behind our home in Marjeyoun. She refused to use the electric oven for it — 'it loses its flavour,' she always said. I remember white smoke rising from the fire, and the smell of charring eggplant mixing with wild thyme from the surrounding hills. When she mashed it with tahini and garlic, the taste was completely different — there was something of the earth, the fire, and memory in it. I have never found that taste anywhere else.",
       },
     ],
     ourSouth: {
