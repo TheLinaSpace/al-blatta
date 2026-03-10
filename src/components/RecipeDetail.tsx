@@ -231,7 +231,7 @@ export function RecipeDetail({
 
       {/* Story Time tab */}
       {activeTab === "story" && (
-        <div className="max-w-3xl mx-auto animate-fade-in">
+        <div className="animate-fade-in">
           <div className={`flex flex-col sm:flex-row gap-8 sm:gap-10 items-start`}>
             {/* Avatar + submitted by + name */}
             <div className="flex flex-col items-center gap-3 sm:w-56 flex-shrink-0 w-full">
@@ -254,9 +254,11 @@ export function RecipeDetail({
               <p className={`font-bold text-stone-400 uppercase tracking-wide mb-3 ${isAr ? "text-[14px] text-right" : "text-[12px] text-left"}`}>
                 {labels.storyLabel}
               </p>
-              <p className={`text-stone-700 leading-relaxed text-[14px] ${isAr ? "text-right" : "text-left"}`}>
-                {recipe.story}
-              </p>
+              <div className={`text-stone-700 leading-relaxed text-[14px] space-y-4 ${isAr ? "text-right" : "text-left"}`}>
+                {recipe.story.split("\n\n").map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
