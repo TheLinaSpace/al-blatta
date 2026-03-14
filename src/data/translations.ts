@@ -76,7 +76,7 @@ export const translations: Record<Lang, Translations> = {
     siteTitle: "كبّة",
     heroTitle: "اكتشف تراث جنوب لبنان من خلال الطهي",
     heroSubtitle:
-      "مجموعة من ألذّ الوصفات الشرقية واللبنانية — من الكبّة المقرمشة إلى الحمّص الناعم وكل ما بينهما.",
+      "مجموعة من وصفات جنوب لبنان، من لبنان الجميل.",
     searchPlaceholder: "تعرف ماذا تريد؟ ابحث عنه!",
     noResults: "لا توجد وصفات. جرّب بحثاً أو تصنيفاً آخر.",
     prep: "تحضير",
@@ -592,7 +592,7 @@ export const translations: Record<Lang, Translations> = {
     siteTitle: "Kibbeh",
     heroTitle: "Discover South Lebanese Heritage Through Culinary",
     heroSubtitle:
-      "A collection of beloved Middle Eastern & Levantine recipes \u2014 from crispy kibbeh to silky hummus and everything in between.",
+      "A collection of south lebanese recipes, from lovely lebanon.",
     searchPlaceholder: "Know what you want? Search it!",
     noResults: "No recipes found. Try a different search or category.",
     prep: "Prep",
