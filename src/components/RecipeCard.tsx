@@ -31,7 +31,7 @@ export function RecipeCard({ recipe, index = 0, onSelect }: RecipeCardProps) {
       <img
         src={bg}
         alt=""
-        className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+        className="absolute inset-0 w-full h-full object-fill pointer-events-none opacity-75"
         aria-hidden="true"
       />
       <div
