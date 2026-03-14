@@ -98,7 +98,7 @@ export const translations: Record<Lang, Translations> = {
       recipes: "الوصفات",
       ourSouth: "جنوبنا",
       ourStory: "قصتنا",
-      contactUs: "تواصل معنا",
+      contactUs: "شارك",
     },
     categories: ["الكل", "مقبلات", "أطباق رئيسية", "سلطات", "أطباق جانبية", "حلويات", "مشروبات"],
     recipes: [
@@ -614,7 +614,7 @@ export const translations: Record<Lang, Translations> = {
       recipes: "Recipes",
       ourSouth: "Our South",
       ourStory: "Our Story",
-      contactUs: "Contact Us",
+      contactUs: "Contribute",
     },
     categories: ["All", "Appetizers", "Main Dishes", "Salads", "Sides", "Desserts", "Drinks"],
     recipes: [

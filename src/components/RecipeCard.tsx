@@ -41,7 +41,7 @@ export function RecipeCard({ recipe, index = 0, onSelect }: RecipeCardProps) {
           <img
             src={recipe.photo}
             alt={recipe.title}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-[filter] duration-300 ${recipe.ingredients.length === 0 ? "grayscale hover:grayscale-0" : ""}`}
             loading="lazy"
           />
         </div>
