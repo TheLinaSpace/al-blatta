@@ -31,6 +31,7 @@ const dir = lang === "ar" ? "rtl" : "ltr";
     <link rel="alternate" hreflang={lang} href={Astro.url.href} />
     <link rel="alternate" hreflang={altLang} href={new URL(altHref, Astro.site ?? Astro.url.origin).href} />
     <title>{title}</title>
+    <script defer data-domain="alblatta.com" src="https://nudge-events.up.railway.app/js/script.js"></script>
     <script>
       if (import.meta.env.DEV) {
         import("react-grab");
