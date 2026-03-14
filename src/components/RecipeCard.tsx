@@ -11,7 +11,7 @@ interface RecipeCardProps {
     instructions: string;
   };
   index?: number;
-  onSelect?: () => void;
+  lang?: string;
 }
 
 const cardBgs = [
@@ -20,13 +20,13 @@ const cardBgs = [
   "/card tile 3.png",
 ];
 
-export function RecipeCard({ recipe, index = 0, onSelect }: RecipeCardProps) {
+export function RecipeCard({ recipe, index = 0, lang = "ar" }: RecipeCardProps) {
   const bg = cardBgs[index % cardBgs.length];
 
   return (
-    <article
-      onClick={onSelect}
-      className="recipe-card relative rounded-[10px] overflow-hidden cursor-pointer"
+    <a
+      href={`/${lang}/recipes/${recipe.id}`}
+      className="recipe-card relative rounded-[10px] overflow-hidden cursor-pointer block"
     >
       <img
         src={bg}
@@ -50,6 +50,6 @@ export function RecipeCard({ recipe, index = 0, onSelect }: RecipeCardProps) {
           {recipe.title}
         </h3>
       </div>
-    </article>
+    </a>
   );
 }

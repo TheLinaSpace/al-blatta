@@ -93,8 +93,6 @@ interface RecipeDetailProps {
     submittedBy: string;
     storyLabel: string;
   };
-  onClose: () => void;
-  onSelectRecipe: (recipe: Recipe) => void;
 }
 
 export function RecipeDetail({
@@ -102,8 +100,6 @@ export function RecipeDetail({
   allRecipes,
   lang = "en",
   labels,
-  onClose,
-  onSelectRecipe,
 }: RecipeDetailProps) {
   const isAr = lang === "ar";
   const [activeTab, setActiveTab] = useState<"recipe" | "story" | "other">(
@@ -126,6 +122,19 @@ export function RecipeDetail({
 
   return (
     <div className="animate-fade-in font-heebo">
+      {/* Back link */}
+      <div className={`mb-4 ${isAr ? "text-right" : "text-left"}`}>
+        <a
+          href={`/${lang}/`}
+          className={`inline-flex items-center gap-1.5 text-stone-500 hover:text-black transition-colors ${isAr ? "text-[14px] sm:text-[16px] flex-row-reverse" : "text-[13px] sm:text-[15px]"}`}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={isAr ? "rotate-180" : ""}>
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          {labels.backToRecipes}
+        </a>
+      </div>
+
       {/* Title */}
       <h2 className={`text-center font-mansalva text-black mb-4 sm:mb-6 ${isAr ? "text-[30px] sm:text-[44px]" : "text-[26px] sm:text-[36px]"}`}>
         {recipe.title}
@@ -380,13 +389,10 @@ export function RecipeDetail({
       {activeTab === "other" && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 animate-fade-in">
           {otherRecipes.map((r) => (
-            <button
+            <a
               key={r.id}
-              onClick={() => {
-                onSelectRecipe(r);
-                setActiveTab("recipe");
-              }}
-              className="bg-[#ddac9b] border-3 border-[#b93f15] rounded-[16px] sm:rounded-[30px] overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform text-start"
+              href={`/${lang}/recipes/${r.id}`}
+              className="bg-[#ddac9b] border-3 border-[#b93f15] rounded-[16px] sm:rounded-[30px] overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform block"
             >
               <div className="aspect-square overflow-hidden">
                 <img
@@ -398,7 +404,7 @@ export function RecipeDetail({
               <p className="p-3 sm:p-4 text-center font-mansalva text-[14px] sm:text-[18px] text-black">
                 {r.title}
               </p>
-            </button>
+            </a>
           ))}
         </div>
       )}

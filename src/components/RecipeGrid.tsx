@@ -2,7 +2,6 @@ import { useState, useMemo } from "react";
 import type { Recipe } from "../data/recipes";
 import { SearchBar } from "./SearchBar";
 import { RecipeCard } from "./RecipeCard";
-import { RecipeDetail } from "./RecipeDetail";
 
 interface RecipeGridProps {
   recipes: Recipe[];
@@ -32,7 +31,6 @@ interface RecipeGridProps {
 export function RecipeGrid({ recipes, lang, heroTitle, labels }: RecipeGridProps) {
   const isAr = lang === "ar";
   const [search, setSearch] = useState("");
-  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
 
   const filtered = useMemo(() => {
     const query = search.toLowerCase().trim();
@@ -45,19 +43,6 @@ export function RecipeGrid({ recipes, lang, heroTitle, labels }: RecipeGridProps
       );
     });
   }, [search, recipes]);
-
-  if (selectedRecipe) {
-    return (
-      <RecipeDetail
-        recipe={selectedRecipe}
-        allRecipes={recipes}
-        lang={lang}
-        labels={labels}
-        onClose={() => setSelectedRecipe(null)}
-        onSelectRecipe={setSelectedRecipe}
-      />
-    );
-  }
 
   return (
     <div>
@@ -89,7 +74,7 @@ export function RecipeGrid({ recipes, lang, heroTitle, labels }: RecipeGridProps
               recipe={recipe}
               labels={labels}
               index={index}
-              onSelect={() => setSelectedRecipe(recipe)}
+              lang={lang}
             />
           ))}
         </div>

@@ -1,0 +1,65 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { Navbar } from "../../../components/Navbar";
+import { RecipeDetail } from "../../../components/RecipeDetail";
+import { translations, type Lang } from "../../../data/translations";
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const lang of ["ar", "en"] as const) {
+    for (const recipe of translations[lang].recipes) {
+      paths.push({ params: { lang, id: recipe.id } });
+    }
+  }
+  return paths;
+}
+
+const lang = Astro.params.lang as Lang;
+const altLang: Lang = lang === "ar" ? "en" : "ar";
+const t = translations[lang];
+
+const recipe = t.recipes.find((r) => r.id === Astro.params.id)!;
+
+const labels = {
+  prep: t.prep,
+  cook: t.cook,
+  serves: t.serves,
+  people: t.people,
+  ingredients: t.ingredients,
+  instructions: t.instructions,
+  portionSize: t.portionSize,
+  recipeTab: t.recipeTab,
+  storyTimeTab: t.storyTimeTab,
+  otherRecipesTab: t.otherRecipesTab,
+  expand: t.expand,
+  backToRecipes: t.backToRecipes,
+  submittedBy: t.submittedBy,
+  storyLabel: t.storyLabel,
+};
+---
+
+<Layout
+  title={`${t.siteTitle} — ${recipe.title}`}
+  description={recipe.description}
+  lang={lang}
+  altLang={altLang}
+  altHref={`/${altLang}/recipes/${recipe.id}`}
+>
+  <Navbar client:load nav={t.nav} lang={lang} altLang={altLang} activePage="recipes" />
+
+  <main class="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <RecipeDetail
+      client:load
+      recipe={recipe}
+      allRecipes={t.recipes}
+      lang={lang}
+      labels={labels}
+    />
+  </main>
+
+  <footer
+    class="text-center text-stone-400 text-sm py-6 sm:py-8 border-t border-stone-100 mt-8 sm:mt-12"
+  >
+    {t.footer}
+  </footer>
+</Layout>
