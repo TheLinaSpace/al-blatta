@@ -1,6 +1,78 @@
 import { useState } from "react";
 import type { Recipe } from "../data/recipes";
 
+function toArabicIndic(s: string): string {
+  return s.replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[parseInt(d)]);
+}
+
+function toWesternArabic(s: string): string {
+  return s.replace(/[٠١٢٣٤٥٦٧٨٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d)));
+}
+
+function formatNum(n: number, arabic: boolean): string {
+  const fracs: [number, string][] = [
+    [1 / 4, "1/4"],
+    [1 / 3, "1/3"],
+    [1 / 2, "1/2"],
+    [2 / 3, "2/3"],
+    [3 / 4, "3/4"],
+  ];
+  const whole = Math.floor(n);
+  const frac = n - whole;
+  let result: string;
+
+  if (frac < 0.05) {
+    result = String(whole);
+  } else if (frac > 0.95) {
+    result = String(whole + 1);
+  } else {
+    let best = fracs[0];
+    for (const f of fracs) {
+      if (Math.abs(frac - f[0]) < Math.abs(frac - best[0])) best = f;
+    }
+    result =
+      Math.abs(frac - best[0]) < 0.07
+        ? whole > 0
+          ? `${whole} ${best[1]}`
+          : best[1]
+        : n.toFixed(1);
+  }
+  return arabic ? toArabicIndic(result) : result;
+}
+
+function scaleIngredient(ingredient: string, scale: number, arabic: boolean): string {
+  if (scale === 1) return ingredient;
+
+  if (arabic) {
+    return ingredient.replace(
+      /[٠١٢٣٤٥٦٧٨٩]+(?:\.[٠١٢٣٤٥٦٧٨٩]+)?/g,
+      (match, offset) => {
+        const before = ingredient.slice(0, offset);
+        if (/رقم\s*$/.test(before)) return match;
+        const value = parseFloat(toWesternArabic(match));
+        return formatNum(value * scale, true);
+      }
+    );
+  }
+
+  return ingredient.replace(
+    /(\d+)\s+(\d+)\/(\d+)|(\d+)\/(\d+)|(\d+(?:\.\d+)?)/g,
+    (match, wA, nA, dA, nB, dB, whole, offset) => {
+      const before = ingredient.slice(0, offset);
+      if (/#\s*$/.test(before)) return match;
+      let value: number;
+      if (wA !== undefined) {
+        value = parseInt(wA) + parseInt(nA) / parseInt(dA);
+      } else if (nB !== undefined) {
+        value = parseInt(nB) / parseInt(dB);
+      } else {
+        value = parseFloat(whole);
+      }
+      return formatNum(value * scale, false);
+    }
+  );
+}
+
 interface RecipeDetailProps {
   recipe: Recipe;
   allRecipes: Recipe[];
@@ -194,7 +266,7 @@ export function RecipeDetail({
                     className={`text-black flex items-start gap-2 ${isAr ? "text-[15px] sm:text-[17px]" : "text-[13px] sm:text-[15px]"}`}
                   >
                     <span className="mt-0.5 flex-shrink-0">&#x2022;</span>
-                    {ing}
+                    {scaleIngredient(ing, scale, isAr)}
                   </li>
                 ))}
               </ul>
@@ -235,10 +307,18 @@ export function RecipeDetail({
           <div className={`flex flex-col sm:flex-row gap-8 sm:gap-10 items-start`}>
             {/* Avatar + submitted by + name */}
             <div className="flex flex-col items-center gap-3 sm:w-56 flex-shrink-0 w-full">
-              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full bg-stone-100 border-4 border-stone-200 shadow-sm flex items-center justify-center">
-                <svg viewBox="0 0 24 24" className="w-20 h-20 sm:w-28 sm:h-28 text-stone-400" fill="currentColor">
-                  <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                </svg>
+              <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full bg-stone-100 border-4 border-stone-200 shadow-sm flex items-center justify-center overflow-hidden">
+                {recipe.contributorPhoto ? (
+                  <img
+                    src={recipe.contributorPhoto}
+                    alt={recipe.contributor}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <svg viewBox="0 0 24 24" className="w-20 h-20 sm:w-28 sm:h-28 text-stone-400" fill="currentColor">
+                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                  </svg>
+                )}
               </div>
               <div className="flex flex-col items-center gap-0.5">
                 <p className={`text-stone-400 ${isAr ? "text-[15px]" : "text-[13px]"}`}>

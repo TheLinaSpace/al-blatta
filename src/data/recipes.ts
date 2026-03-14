@@ -11,5 +11,6 @@ export interface Recipe {
   ingredients: string[];
   instructions: string[];
   contributor: string;
+  contributorPhoto?: string;
   story: string;
 }
